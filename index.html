@@ -1,35 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
+    <meta name="description" content="Portfolio of Edoh Saturnin Agbotame - Mobile Robotics & Embedded AI" />
+    <meta name="author" content="Edoh Saturnin Agbotame" />
     <title>Saturnin Robotics</title>
+
     <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
-    <!-- Font Awesome icons -->
+
+    <!-- Font Awesome -->
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-    <!-- Google fonts-->
+
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" />
-    <!-- Core theme CSS -->
+
+    <!-- Theme CSS -->
     <link href="css/styles.css" rel="stylesheet" />
 
-    <!-- Compact spacing fixes -->
+    <!-- Compact spacing adjustments -->
     <style>
+        /* Section spacing tuned for a clean, compact layout */
         section.resume-section {
             padding-top: 2.5rem !important;
             padding-bottom: 2.5rem !important;
         }
+
         .resume-section h2 {
             margin-bottom: 1.8rem !important;
         }
+
+        .mb-3 {
+            margin-bottom: 1rem !important;
+        }
+
+        .mb-2 {
+            margin-bottom: 0.75rem !important;
+        }
+
+        .mb-1 {
+            margin-bottom: 0.5rem !important;
+        }
+
         hr.m-0 {
             margin: 0 !important;
         }
-        .mb-3 { margin-bottom: 1rem !important; }
-        .mb-2 { margin-bottom: 0.75rem !important; }
-        .mb-1 { margin-bottom: 0.5rem !important; }
+
+        /* Certificate image small styling */
+        .cert-thumb {
+            max-width: 480px;
+            border-radius: 6px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+            display: block;
+        }
     </style>
 </head>
 
@@ -40,11 +65,12 @@
         <a class="navbar-brand js-scroll-trigger" href="#page-top">
             <span class="d-block d-lg-none">Saturnin Agbotame</span>
             <span class="d-none d-lg-block">
-                <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="assets/img/profile.jpg" alt="..." />
+                <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="assets/img/profile.jpg" alt="Profile" />
             </span>
         </a>
 
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+            aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
@@ -52,8 +78,10 @@
             <ul class="navbar-nav">
                 <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">About</a></li>
                 <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#experience">Experience</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#projects">Projects</a></li>
                 <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#education">Education</a></li>
                 <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#skills">Skills</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#certifications">Certifications</a></li>
                 <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#interests">Interests</a></li>
                 <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#awards">Awards</a></li>
             </ul>
@@ -72,25 +100,34 @@
                 </h1>
 
                 <div class="subheading mb-3">
-                    Amiens · Somme, 80080 · (+33) 6 50 07 69 74 ·
-                    <a href="mailto:edoh.agbotame@gmail.com">edoh.agbotame@gmail.com</a>
+                    Amiens · Somme 80080 · (+33) 6 50 07 69 74 ·
+                    <a href="mailto:edohsaturne@gmail.com">edohsaturne@gmail.com</a>
                 </div>
 
                 <p class="lead mb-2 text-justify">
-                    I hold a degree in Intelligent Robotics and Embedded Systems from the University of Toulon...
+                    I am a mobile robotics and embedded AI engineer specializing in perception, localization,
+                    and multi-sensor fusion. I hold a Master's degree in Intelligent Robotics & Embedded Systems
+                    from the University of Toulon, where I worked with ROS2, Gazebo, CARLA and real-time embedded platforms.
                 </p>
 
                 <p class="lead mb-2 text-justify">
-                    Passionate about robotics, I enjoy tackling complex challenges that blend autonomous navigation...
+                    My experience spans embedded CNN deployment (CUDA), microcontroller firmware (STM32, PIC), and
+                    multimodal perception. I enjoy building reproducible pipelines that bridge hardware constraints
+                    and high-level autonomy.
                 </p>
 
                 <p class="lead mb-3 text-justify">
-                    I’m particularly interested in real-time perception, SLAM, path planning...
+                    I am particularly interested in dynamic world models for autonomous robots — combining perception,
+                    mapping, localization and communication with clear metrics and reproducible evaluation.
                 </p>
 
                 <div class="social-icons">
-                    <a class="social-icon" href="https://www.linkedin.com/in/saturnin-edoh-agbotame-a06b531b7/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                    <a class="social-icon" href="https://github.com/saturnin-robotics" target="_blank"><i class="fab fa-github"></i></a>
+                    <a class="social-icon" href="https://www.linkedin.com/in/edoh-saturnin-agbotame" target="_blank" rel="noopener">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a class="social-icon" href="https://github.com/saturnin-robotics" target="_blank" rel="noopener">
+                        <i class="fab fa-github"></i>
+                    </a>
                 </div>
 
             </div>
@@ -100,7 +137,6 @@
         <!-- EXPERIENCE -->
         <section class="resume-section" id="experience">
             <div class="resume-section-content">
-                
                 <h2 class="mb-3">Experience</h2>
 
                 <div class="d-flex flex-column flex-md-row justify-content-between mb-3">
@@ -108,8 +144,8 @@
                         <h3 class="mb-2">Embedded AI Intern</h3>
                         <div class="subheading mb-2">LIGM Laboratory</div>
                         <ul>
-                            <li>Real-time scheduling of embedded CNN pipelines...</li>
-                            <li>Design of evaluation benches and uncertainty estimation...</li>
+                            <li>Real-time scheduling and optimization of embedded CNN pipelines (CUDA).</li>
+                            <li>Definition of performance metrics, uncertainty estimation, and evaluation benches for perception tasks.</li>
                         </ul>
                     </div>
                     <div class="flex-shrink-0"><span class="text-primary">Apr. 2025 – Aug. 2025</span></div>
@@ -120,8 +156,8 @@
                         <h3 class="mb-2">Electronics & IoT Intern</h3>
                         <div class="subheading mb-2">LaMERE Laboratory</div>
                         <ul>
-                            <li>Developed C firmware for PIC/STM32...</li>
-                            <li>Integrated IoT solutions (ESP32)...</li>
+                            <li>Firmware development for PIC/STM32 (sensor acquisition, interrupts, preprocessing).</li>
+                            <li>IoT node integration with ESP32 and robust communication for distributed sensors.</li>
                         </ul>
                     </div>
                     <div class="flex-shrink-0"><span class="text-primary">Nov. 2022 – Jul. 2023</span></div>
@@ -131,10 +167,38 @@
         </section>
         <hr class="m-0" />
 
+        <!-- PROJECTS -->
+        <section class="resume-section" id="projects">
+            <div class="resume-section-content">
+                <h2 class="mb-3">Projects</h2>
+
+                <div class="mb-2">
+                    <h3 class="mb-1">Autonomous Navigation & SLAM</h3>
+                    <p class="mb-1">LiDAR & depth-camera navigation on TurtleBot2; Gazebo simulation and RViz2 visualization. SSH deployment and real-robot testing of ROS2 navigation stacks.</p>
+                </div>
+
+                <div class="mb-2">
+                    <h3 class="mb-1">Advanced Simulation & CARLA Scenarios</h3>
+                    <p class="mb-1">ROS2 integration with Gazebo and CARLA to test perception and sensor fusion in constrained urban scenarios.</p>
+                </div>
+
+                <div class="mb-2">
+                    <h3 class="mb-1">Multimodal Perception</h3>
+                    <p class="mb-1">Design and evaluation of video+audio fusion pipelines for robust recognition under noisy conditions.</p>
+                </div>
+
+                <div class="mb-2">
+                    <h3 class="mb-1">Real-Time Embedded AI</h3>
+                    <p class="mb-1">Task scheduling with TiRTOS, latency-aware classification on resource-limited hardware, and power-optimized pipelines.</p>
+                </div>
+
+            </div>
+        </section>
+        <hr class="m-0" />
+
         <!-- EDUCATION -->
         <section class="resume-section" id="education">
             <div class="resume-section-content">
-                
                 <h2 class="mb-3">Education</h2>
 
                 <div class="d-flex flex-column flex-md-row justify-content-between mb-2">
@@ -142,80 +206,87 @@
                         <h3 class="mb-1">University of Toulon</h3>
                         <div class="subheading mb-1">Master – Intelligent Robotics & Embedded Systems</div>
                     </div>
-                    <div class="flex-shrink-0"><span class="text-primary">2023 – 2025</span></div>
+                    <div class="flex-shrink-0 text-primary">2023 – 2025</div>
                 </div>
 
-                <div class="d-flex flex-column flex-md-row justify-content-between mb-1">
+                <div class="d-flex flex-column flex-md-row justify-content-between">
                     <div class="flex-grow-1">
                         <h3 class="mb-1">University of Kara (Togo)</h3>
-                        <div class="subheading mb-1">Bachelor – Applied Physics, Electronics & CS</div>
+                        <div class="subheading mb-1">Bachelor – Applied Physics, Electronics & Computer Science</div>
                     </div>
-                    <div class="flex-shrink-0"><span class="text-primary">2019 – 2022</span></div>
+                    <div class="flex-shrink-0 text-primary">2019 – 2022</div>
                 </div>
 
             </div>
         </section>
         <hr class="m-0" />
 
-       <!-- SKILLS -->
-<section class="resume-section" id="skills">
-    <div class="resume-section-content">
+        <!-- SKILLS -->
+        <section class="resume-section" id="skills">
+            <div class="resume-section-content">
+                <h2 class="mb-3">Skills</h2>
 
-        <h2 class="mb-3">Skills</h2>
+                <div class="subheading mb-2 mt-3">Programming & Tools</div>
+                <ul class="fa-ul mb-2">
+                    <li><span class="fa-li"><i class="fas fa-code"></i></span>Python, C / C++ (embedded & multithreaded), MATLAB / Simulink</li>
+                    <li><span class="fa-li"><i class="fas fa-terminal"></i></span>Git, Bash, CI/CD</li>
+                </ul>
 
-        <div class="subheading mb-2 mt-3">Programming & Tools</div>
-        <ul class="fa-ul mb-2">
-            <li>C / C++ (embedded & multithreaded)</li>
-            <li>Python (NumPy, OpenCV, PyTorch)</li>
-            <li>MATLAB / Simulink</li>
-            <li>Git, Bash, CI/CD</li>
-        </ul>
+                <div class="subheading mb-2 mt-3">Embedded & IoT</div>
+                <ul class="fa-ul mb-2">
+                    <li><span class="fa-li"><i class="fas fa-microchip"></i></span>Firmware (STM32, PIC), RTOS (FreeRTOS, TiRTOS)</li>
+                    <li><span class="fa-li"><i class="fas fa-wifi"></i></span>ESP32, sensor integration, UART/SPI/I2C</li>
+                </ul>
 
-        <div class="subheading mb-2 mt-3">Embedded & IoT</div>
-        <ul class="fa-ul mb-2">
-            <li>Firmware development (STM32, PIC)</li>
-            <li>RTOS (FreeRTOS, TI-RTOS)</li>
-            <li>Sensor integration & IoT systems (ESP32, UART/SPI/I2C)</li>
-        </ul>
+                <div class="subheading mb-2 mt-3">Control & Estimation</div>
+                <ul class="fa-ul mb-2">
+                    <li><span class="fa-li"><i class="fas fa-project-diagram"></i></span>PID, state-space control, system modeling</li>
+                    <li><span class="fa-li"><i class="fas fa-sync-alt"></i></span>Sensor fusion (EKF/UKF, ICP, visual odometry)</li>
+                </ul>
 
-        <div class="subheading mb-2 mt-3">Control & Estimation</div>
-        <ul class="fa-ul mb-2">
-            <li>PID & state-space control</li>
-            <li>System modeling & simulation</li>
-            <li>Sensor fusion (EKF, UKF, invariant filtering)</li>
-        </ul>
+                <div class="subheading mb-2 mt-3">Perception & ROS2</div>
+                <ul class="fa-ul mb-2">
+                    <li><span class="fa-li"><i class="fas fa-eye"></i></span>Camera calibration, feature extraction, real-time detection</li>
+                    <li><span class="fa-li"><i class="fas fa-robot"></i></span>ROS2: nodes, topics, actions, launch (colcon), Nav2, Gazebo</li>
+                </ul>
 
-        <div class="subheading mb-2 mt-3">Computer Vision & Perception</div>
-        <ul class="fa-ul mb-2">
-            <li>Camera calibration & feature extraction</li>
-            <li>Real-time detection (objects, markers)</li>
-            <li>Deep learning perception (CNNs, uncertainty estimation)</li>
-        </ul>
+            </div>
+        </section>
+        <hr class="m-0" />
 
-        <div class="subheading mb-2 mt-3">Robotics & ROS2</div>
-        <ul class="fa-ul mb-2">
-            <li>Robot kinematics & dynamics</li>
-            <li>SLAM & localization (AMCL, EKF, ICP)</li>
-            <li>Path planning (A*, Dijkstra, RRT/PRM)</li>
-            <li>ROS2 navigation stack (Nav2) & Gazebo simulation</li>
-        </ul>
+        <!-- CERTIFICATIONS -->
+        <section class="resume-section" id="certifications">
+            <div class="resume-section-content">
+                <h2 class="mb-3">Certifications</h2>
 
-    </div>
-</section>
-<hr class="m-0" />
+                <ul class="fa-ul mb-2">
+                    <li>
+                        <span class="fa-li"><i class="fas fa-certificate text-warning"></i></span>
+                        <strong>Self Driving and ROS 2 – Learn by Doing! Odometry & Control</strong><br>
+                        Udemy · Instructor: Antonio Brandi<br>
+                        <small>Certified on 28 November 2025 — 29 hours</small>
+                        <div class="mt-2">
+                            <a href="#" target="_blank" rel="noopener">
+                                <img src="assets/img/certificat_ROS2_UDEMY.jpg" alt="Udemy ROS2 Certificate" class="cert-thumb">
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <hr class="m-0" />
 
         <!-- INTERESTS -->
         <section class="resume-section" id="interests">
             <div class="resume-section-content">
-
                 <h2 class="mb-3">Interests</h2>
 
-                <p class="mb-2">I’m passionate about autonomous robotics and computer vision...</p>
+                <p class="mb-2">I’m passionate about autonomous robotics, real-time perception, SLAM, and simulation pipelines.</p>
 
                 <ul class="fa-ul mb-2">
-                    <li>Entrepreneurship</li>
-                    <li>Personal development</li>
-                    <li>Robotics challenges</li>
+                    <li><span class="fa-li"><i class="fas fa-rocket"></i></span>Entrepreneurship & project design</li>
+                    <li><span class="fa-li"><i class="fas fa-brain"></i></span>Personal development & leadership</li>
+                    <li><span class="fa-li"><i class="fas fa-robot"></i></span>Robotics challenges & open-source tools</li>
                 </ul>
 
             </div>
@@ -225,12 +296,11 @@
         <!-- AWARDS -->
         <section class="resume-section" id="awards">
             <div class="resume-section-content">
-
                 <h2 class="mb-3">Awards & Distinctions</h2>
 
                 <ul class="fa-ul mb-2">
-                    <li>Excellence Scholarship</li>
-                    <li>Public speaking contest winner</li>
+                    <li><span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>Excellence Scholarship — University of Toulon</li>
+                    <li><span class="fa-li"><i class="fas fa-award text-warning"></i></span>Laureate — “Les Jeunes Parlent” public speaking contest</li>
                 </ul>
 
             </div>
@@ -240,6 +310,8 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-
+    <!-- Theme JS -->
+    <script src="js/scripts.js"></script>
 </body>
+
 </html>
