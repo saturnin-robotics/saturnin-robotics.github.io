@@ -9,16 +9,10 @@
 
 window.addEventListener('DOMContentLoaded', event => {
 
-    // Activate Bootstrap scrollspy on the main nav element
-    const sideNav = document.body.querySelector('#sideNav');
-    if (sideNav) {
-        new bootstrap.ScrollSpy(document.body, {
-            target: '#sideNav',
-            rootMargin: '0px 0px -40%',
-        });
-    };
+    // NOTE : La partie "ScrollSpy" a été supprimée car nous sommes en mode multi-pages.
 
     // Collapse responsive navbar when toggler is visible
+    // (Ferme le menu sur mobile quand on clique sur un lien)
     const navbarToggler = document.body.querySelector('.navbar-toggler');
     const responsiveNavItems = [].slice.call(
         document.querySelectorAll('#navbarResponsive .nav-link')
