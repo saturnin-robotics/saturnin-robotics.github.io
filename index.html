@@ -1,71 +1,293 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <title>Saturnin Robotics</title>
-    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="description" content="Portfolio de Saturnin Agbotame - Ingénieur Robotique Mobile & IA Embarquée" />
+    <meta name="author" content="Edoh Saturnin Agbotame" />
+    <title>Saturnin Robotics | Portfolio</title>
+    <link rel="icon" href="assets/img/favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-    <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" />
-    <link href="css/styles.css" rel="stylesheet" />
+
     <style>
-        section.resume-section { padding-top: 2.5rem !important; padding-bottom: 2.5rem !important; min-height: 100vh; }
-        .resume-section h2 { margin-bottom: 1.8rem !important; }
-        .mb-3 { margin-bottom: 1rem !important; }
-        .cert-thumb { max-width: 480px; border-radius: 6px; box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06); display: block; }
+        :root{
+            --bg:#0b1220;
+            --card:#0f1724;
+            --muted:#a8b3c7;
+            --accent:#60a5fa;   /* Bleu clair */
+            --accent-2:#3b82f6; /* Bleu vif */
+            --glass: rgba(255,255,255,0.04);
+            --radius:14px;
+            --max-width:1100px;
+            --gap:18px;
+        }
+
+        /* Base */
+        *{box-sizing:border-box}
+        html{scroll-behavior:smooth}
+        body{
+            margin:0;
+            font-family:'Poppins',system-ui,sans-serif;
+            background:
+                radial-gradient(800px 500px at 10% 10%, rgba(59,130,246,0.06), transparent 6%),
+                radial-gradient(600px 400px at 90% 90%, rgba(96,165,250,0.04), transparent 6%),
+                var(--bg);
+            color:#e6eef8;
+            line-height:1.6;
+            padding-bottom:60px;
+        }
+
+        a{color:inherit; text-decoration: none;}
+        
+        /* Layout Wrappers */
+        .wrap{max-width:var(--max-width);margin:0 auto;padding:28px;}
+        
+        /* HEADER */
+        header{
+            background:linear-gradient(135deg,var(--accent-2),#0ea5e9 70%);
+            border-radius:16px;
+            padding:28px 36px;
+            color:white;
+            margin:20px 20px 10px;
+            box-shadow: 0 8px 30px rgba(2,6,23,0.6);
+            display:flex; flex-wrap: wrap;
+            align-items:center; justify-content:space-between; gap:20px;
+        }
+        header h1{font-size:1.8rem;margin:0;font-weight:700;}
+        header p{margin:4px 0 0;font-weight:500;opacity:0.95}
+        
+        /* Navigation */
+        nav{
+            display:flex;justify-content:center;gap:15px; flex-wrap: wrap;
+            margin:20px 20px;
+        }
+        nav a{color:var(--muted);padding:8px 16px;border-radius:10px;font-weight:600;transition:0.2s;}
+        nav a:hover{color:var(--accent);background:var(--glass)}
+        nav a.active{background:rgba(255,255,255,0.08);color:white}
+
+        /* HERO SECTION */
+        .hero{
+            display:flex; align-items:center; justify-content:space-between; gap:40px;
+            margin:20px; padding:40px;
+            background:linear-gradient(180deg, rgba(255,255,255,0.03), transparent);
+            border-radius:var(--radius);
+            box-shadow: 0 6px 20px rgba(2,6,23,0.5);
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        .hero-left{flex:2;}
+        .hero h2{font-size:2.4rem;margin:0 0 15px;font-weight:700; background: -webkit-linear-gradient(#fff, #94a3b8); -webkit-background-clip: text; -webkit-text-fill-color: transparent;}
+        .hero p{margin:0 0 25px;color:var(--muted);font-size:1.1rem;}
+        
+        .hero-right{flex:1; display: flex; justify-content: center;}
+        .hero-right img {
+            width: 180px; height: 180px; border-radius: 50%; 
+            object-fit: cover; border: 4px solid rgba(59,130,246,0.3);
+            box-shadow: 0 0 30px rgba(59,130,246,0.2);
+        }
+
+        .cta-group {display: flex; gap: 15px;}
+        .btn-primary {background: var(--accent-2); color: white; padding: 10px 20px; border-radius: 8px; font-weight: 600;}
+        .btn-ghost {border: 1px solid var(--muted); color: var(--muted); padding: 10px 20px; border-radius: 8px; font-weight: 600;}
+        .btn-primary:hover {transform: translateY(-2px); box-shadow: 0 5px 15px rgba(59,130,246,0.4);}
+
+        /* TITRES SECTIONS */
+        .section-title{
+            margin:50px 0 25px; text-align:center; 
+            color:var(--accent); font-weight:700; text-transform: uppercase; letter-spacing: 1px;
+        }
+
+        /* CARDS (Projets & Expérience) */
+        .grid-container{
+            display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));
+            gap:var(--gap); margin:0 20px;
+        }
+        
+        .card{
+            background:rgba(255,255,255,0.02);
+            padding:20px; border-radius:16px; border:1px solid rgba(255,255,255,0.04);
+            transition:transform .3s, box-shadow .3s;
+            display:flex; flex-direction:column;
+        }
+        .card:hover{transform:translateY(-5px); box-shadow:0 10px 30px rgba(0,0,0,0.3); border-color:var(--accent-2);}
+        
+        .project-thumb {
+            height: 160px; background: #1e293b; border-radius: 8px; margin-bottom: 15px;
+            display: flex; align-items: center; justify-content: center; overflow: hidden;
+        }
+        .project-thumb img {width: 100%; height: 100%; object-fit: cover; opacity: 0.8; transition: 0.3s;}
+        .card:hover .project-thumb img {opacity: 1; transform: scale(1.05);}
+
+        .card h3 {margin: 0 0 8px; color: white;}
+        .card h4 {margin: 0 0 10px; color: var(--accent); font-size: 0.9rem; font-weight: 500;}
+        .card p {color: var(--muted); font-size: 0.95rem; flex-grow: 1;}
+        
+        .tags{display:flex;gap:8px;flex-wrap:wrap; margin-top: 15px;}
+        .tag{font-size:0.75rem;padding:4px 10px;border-radius:20px;background:rgba(59,130,246,0.15);color:#93c5fd; border: 1px solid rgba(59,130,246,0.2);}
+
+        /* SKILLS SECTION */
+        .skills-wrap {
+            display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin: 0 20px;
+        }
+        .skill-pill {
+            background: rgba(255,255,255,0.05); padding: 10px 20px; border-radius: 8px;
+            color: white; font-weight: 500; display: flex; align-items: center; gap: 10px;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        .skill-pill i {color: var(--accent);}
+
+        /* FOOTER */
+        footer {text-align: center; padding: 40px; color: var(--muted); font-size: 0.9rem;}
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {flex-direction: column-reverse; text-align: center;}
+            header {flex-direction: column; text-align: center;}
+        }
     </style>
 </head>
 
-<body id="page-top">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
-        <a class="navbar-brand" href="index.html">
-            <span class="d-block d-lg-none">Saturnin Agbotame</span>
-            <span class="d-none d-lg-block">
-                <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="assets/img/profile.jpg" alt="Profile" />
-            </span>
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link active" href="index.html">About</a></li>
-                <li class="nav-item"><a class="nav-link" href="experience.html">Experience</a></li>
-                <li class="nav-item"><a class="nav-link" href="projects.html">Projects</a></li>
-                <li class="nav-item"><a class="nav-link" href="education.html">Education</a></li>
-                <li class="nav-item"><a class="nav-link" href="skills.html">Skills</a></li>
-                <li class="nav-item"><a class="nav-link" href="certifications.html">Certifications</a></li>
-                <li class="nav-item"><a class="nav-link" href="interests.html">Interests</a></li>
-                <li class="nav-item"><a class="nav-link" href="awards.html">Awards</a></li>
-            </ul>
-        </div>
-    </nav>
+<body>
 
-    <div class="container-fluid p-0">
-        <section class="resume-section" id="about">
-            <div class="resume-section-content">
-                <h1 class="mb-3">Saturnin <span class="text-primary">Agbotame</span></h1>
-                <div class="subheading mb-3">
-                    Amiens · Somme 80080 · (+33) 6 50 07 69 74 · <a href="mailto:edohsaturne@gmail.com">edohsaturne@gmail.com</a>
-                </div>
-                <p class="lead mb-2 text-justify">
-                    I am a mobile robotics and embedded AI engineer specializing in perception, localization, and multi-sensor fusion. 
-                    I hold a Master's degree in Intelligent Robotics & Embedded Systems from the University of Toulon.
-                </p>
-                <p class="lead mb-2 text-justify">
-                    My experience spans embedded CNN deployment (CUDA), microcontroller firmware (STM32, PIC), and multimodal perception. 
-                    I enjoy building reproducible pipelines that bridge hardware constraints and high-level autonomy.
-                </p>
-                <div class="social-icons mt-3">
-                    <a class="social-icon" href="https://www.linkedin.com/in/edoh-saturnin-agbotame" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                    <a class="social-icon" href="https://github.com/saturnin-robotics" target="_blank"><i class="fab fa-github"></i></a>
-                </div>
-            </div>
-        </section>
+<header class="wrap">
+    <div>
+        <h1>Saturnin Agbotame</h1>
+        <p>Ingénieur Robotique Mobile & IA Embarquée</p>
+    </div>
+    <div style="display:flex; gap:15px;">
+        <a href="https://github.com/saturnin-robotics" target="_blank" class="btn-ghost"><i class="fab fa-github"></i> GitHub</a>
+        <a href="https://www.linkedin.com/in/edoh-saturnin-agbotame" target="_blank" class="btn-primary"><i class="fab fa-linkedin"></i> LinkedIn</a>
+    </div>
+</header>
+
+<nav class="wrap">
+    <a href="#about" class="active">À propos</a>
+    <a href="#projects">Projets</a>
+    <a href="#experience">Expérience</a>
+    <a href="#skills">Compétences</a>
+    <a href="#contact">Contact</a>
+</nav>
+
+<main class="wrap">
+
+<section id="about" class="hero">
+    <div class="hero-left">
+        <h2>Perception, Localisation & Fusion Multi-Capteurs</h2>
+        <p>
+            Ingénieur spécialisé en robotique mobile autonome. Passionné par l'intégration d'algorithmes complexes (SLAM, CNN) sur des systèmes embarqués contraints.
+            <br><br>
+            Diplômé du Master <strong>Robotique Intelligente & Systèmes Embarqués</strong> de l'Université de Toulon.
+        </p>
+        <div class="cta-group">
+            <a href="#projects" class="btn-primary">Voir mes Robots</a>
+            <a href="mailto:edohsaturne@gmail.com" class="btn-ghost">Me contacter</a>
+        </div>
+    </div>
+    <div class="hero-right">
+        <img src="assets/img/profile.jpg" alt="Saturnin Agbotame">
+    </div>
+</section>
+
+<h3 id="projects" class="section-title">Projets Phares</h3>
+<div class="grid-container">
+
+    <article class="card">
+        <div class="project-thumb">
+            <img src="assets/img/turtlebot_nav.jpg" alt="Navigation Autonome" onerror="this.src='https://via.placeholder.com/640x360.png?text=ROS2+Navigation'">
+        </div>
+        <h3>Navigation Autonome & SLAM</h3>
+        <p>Déploiement d'une stack de navigation complète sur TurtleBot2. Cartographie Lidar, planification de trajectoire et évitement d'obstacles dynamiques.</p>
+        <div class="tags">
+            <span class="tag">ROS 2</span>
+            <span class="tag">Nav2</span>
+            <span class="tag">Gazebo</span>
+            <span class="tag">C++</span>
+        </div>
+    </article>
+
+    <article class="card">
+        <div class="project-thumb">
+            <img src="assets/img/fusion.jpg" alt="Perception" onerror="this.src='https://via.placeholder.com/640x360.png?text=Perception+Fusion'">
+        </div>
+        <h3>Perception Multimodale</h3>
+        <p>Conception d'un pipeline de fusion vidéo + audio pour la reconnaissance robuste en environnement bruité. Évaluation des performances en temps réel.</p>
+        <div class="tags">
+            <span class="tag">Python</span>
+            <span class="tag">Deep Learning</span>
+            <span class="tag">Sensor Fusion</span>
+        </div>
+    </article>
+
+    <article class="card">
+        <div class="project-thumb">
+            <img src="assets/img/embedded.jpg" alt="Embedded AI" onerror="this.src='https://via.placeholder.com/640x360.png?text=Embedded+AI'">
+        </div>
+        <h3>IA Embarquée Temps Réel</h3>
+        <p>Ordonnancement de tâches avec TiRTOS et classification optimisée sur matériel limité. Gestion de la latence et consommation énergétique.</p>
+        <div class="tags">
+            <span class="tag">TiRTOS</span>
+            <span class="tag">STM32</span>
+            <span class="tag">CUDA</span>
+        </div>
+    </article>
+
+</div>
+
+<h3 id="experience" class="section-title">Parcours</h3>
+<div class="grid-container">
+    
+    <div class="card" style="border-left: 4px solid var(--accent);">
+        <h3>Ingénieur Stagiaire IA Embarquée</h3>
+        <h4>Laboratoire LIGM | Avril 2025 – Août 2025</h4>
+        <p>Ordonnancement temps réel et optimisation de pipelines CNN embarqués (CUDA). Définition de métriques de performance et estimation d'incertitude pour la perception.</p>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/scripts.js"></script>
+    <div class="card" style="border-left: 4px solid var(--accent);">
+        <h3>Stagiaire Électronique & IoT</h3>
+        <h4>Laboratoire LaMERE | Nov 2022 – Juil 2023</h4>
+        <p>Développement Firmware PIC/STM32 (acquisition capteurs, interruptions). Intégration de nœuds IoT avec ESP32 pour réseaux de capteurs distribués.</p>
+    </div>
+
+    <div class="card" style="border-left: 4px solid var(--accent-2);">
+        <h3>Master Robotique Intelligente</h3>
+        <h4>Université de Toulon | 2023 – 2025</h4>
+        <p>Systèmes Embarqués, ROS 2, Vision par Ordinateur, Contrôle commande.</p>
+    </div>
+
+</div>
+
+<h3 id="skills" class="section-title">Stack Technique</h3>
+<div class="skills-wrap">
+    <div class="skill-pill"><i class="fas fa-code"></i> C++ / Python</div>
+    <div class="skill-pill"><i class="fas fa-robot"></i> ROS 2 (Humble)</div>
+    <div class="skill-pill"><i class="fas fa-microchip"></i> STM32 / ESP32</div>
+    <div class="skill-pill"><i class="fas fa-layer-group"></i> Nav2 / SLAM</div>
+    <div class="skill-pill"><i class="fas fa-brain"></i> TensorFlow / PyTorch</div>
+    <div class="skill-pill"><i class="fas fa-terminal"></i> Linux / Bash / Git</div>
+    <div class="skill-pill"><i class="fas fa-cube"></i> Docker</div>
+    <div class="skill-pill"><i class="fas fa-video"></i> OpenCV</div>
+</div>
+
+<section id="contact" style="margin-top: 60px;">
+    <h3 class="section-title">Contact</h3>
+    <div class="card" style="max-width: 600px; margin: 0 auto; text-align: center;">
+        <p style="font-size: 1.1rem; margin-bottom: 20px;">
+            À la recherche d'opportunités en Robotique Mobile et IA Embarquée.
+        </p>
+        <a href="mailto:edohsaturne@gmail.com" class="btn-primary" style="font-size: 1.2rem;">
+            <i class="fas fa-envelope"></i> edohsaturne@gmail.com
+        </a>
+        <p style="margin-top: 20px; color: var(--muted);">
+            Amiens, France • (+33) 6 50 07 69 74
+        </p>
+    </div>
+</section>
+
+</main>
+
+<footer>
+    <p>© 2025 Saturnin Agbotame. Construit avec passion pour la robotique.</p>
+</footer>
+
 </body>
 </html>
