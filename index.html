@@ -3,11 +3,11 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <meta name="description" content="Portfolio of Saturnin Agbotame - Mobile Robotics & Embedded AI Engineer" />
+    <meta name="description" content="Portfolio of Saturnin Agbotame - Robotics & Computer Vision Engineer" />
     <meta name="author" content="Edoh Saturnin Agbotame" />
     <title>Saturnin Robotics | Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         :root{
@@ -100,20 +100,6 @@
         /* HERO */
         .hero { padding: 60px 0; display: flex; align-items: center; justify-content: space-between; gap: 40px; }
         .hero-content { flex: 1; }
-        
-        /* Status Badge for "Vendeur" aspect */
-        .status-badge {
-            display: inline-flex; align-items: center; gap: 8px;
-            background: rgba(16, 185, 129, 0.1); color: #34d399;
-            padding: 6px 12px; border-radius: 20px; font-size: 0.85rem; font-weight: 600;
-            border: 1px solid rgba(16, 185, 129, 0.2); margin-bottom: 20px;
-        }
-        .status-dot {
-            width: 8px; height: 8px; background: #34d399; border-radius: 50%;
-            box-shadow: 0 0 10px #34d399; animation: pulse 2s infinite;
-        }
-        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
-
         .hero-content h1 {
             font-size: 3.5rem; line-height: 1.1; margin-bottom: 20px;
             background: linear-gradient(to right, #fff, #94a3b8); 
@@ -121,9 +107,9 @@
         }
         .hero-content .subtitle {
             font-size: 1.25rem; color: var(--accent); margin-bottom: 24px; font-weight: 500;
-            display: inline-block;
+            display: inline-block; padding: 5px 12px; background: rgba(96, 165, 250, 0.1); border-radius: 6px;
         }
-        .hero-content p { font-size: 1.1rem; color: var(--muted); margin-bottom: 35px; max-width: 580px; }
+        .hero-content p { font-size: 1.1rem; color: var(--muted); margin-bottom: 35px; max-width: 600px; }
         
         .hero-img { position: relative; }
         .hero-img::before {
@@ -200,16 +186,6 @@
         .timeline-loc { font-size: 1rem; color: var(--muted); margin-bottom: 12px; font-style: italic; }
         .timeline-item ul li { margin-bottom: 8px; }
 
-        /* CERTIFICATION CARDS (New) */
-        .cert-card {
-            flex-direction: row; align-items: center; gap: 20px; padding: 20px;
-        }
-        .cert-img {
-            width: 70px; height: 70px; border-radius: 8px; object-fit: cover;
-            border: 1px solid var(--border); background: #fff; padding: 2px;
-        }
-        .cert-info h3 { font-size: 1.1rem; margin-bottom: 5px; line-height: 1.3; }
-        
         /* SKILLS */
         .skill-category { margin-bottom: 24px; }
         .skill-title { color: white; font-weight: 600; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; font-size: 1.1rem; }
@@ -222,10 +198,7 @@
 
         /* CONTACT CARD */
         .contact-card { text-align: center; max-width: 600px; margin: 0 auto; padding: 40px; }
-        .contact-email { 
-            font-size: 1.2rem; font-weight: 600; margin-bottom: 10px; display: block;
-        }
-
+        
         /* FOOTER */
         footer { text-align: center; color: var(--muted); margin-top: 100px; border-top: 1px solid var(--border); padding: 40px 0; }
         .social-links { display: flex; justify-content: center; gap: 24px; margin-bottom: 20px; }
@@ -242,7 +215,6 @@
             nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; }
             nav a { margin: 0; }
             .btn-group { justify-content: center; }
-            .cert-card { flex-direction: column; text-align: center; }
         }
     </style>
 </head>
@@ -266,19 +238,13 @@
 
         <section id="about" class="hero animate-in">
             <div class="hero-content">
-                <div class="status-badge">
-                    <div class="status-dot"></div>
-                    Open to Work
-                </div>
-                
+                <div class="subtitle mono">Robotics & Computer Vision Engineer</div>
                 <h1>Saturnin Agbotame</h1>
-                <div class="subtitle mono">Embedded AI & Mobile Robotics Engineer</div>
-                
                 <p>
-                    Specializing in <strong>perception, localization, and multi-sensor fusion</strong>. 
-                    I hold a Master's degree in Intelligent Robotics & Embedded Systems from the University of Toulon.
+                    Specializing in <strong>Perception, SLAM, and Multi-Sensor Fusion</strong>. 
+                    With a strong background in Intelligent Robotics (M.Sc.), I focus on deploying complex algorithms onto resource-constrained hardware.
                     <br><br>
-                    I enjoy building reproducible pipelines that bridge hardware constraints (STM32/PIC) and high-level autonomy (ROS 2).
+                    My expertise lies in bridging the gap between high-level autonomy (<strong>ROS 2, Python</strong>) and real-time embedded performance (<strong>C++, CUDA, NVIDIA Jetson</strong>). I build reproducible, optimized pipelines that turn data into decision.
                 </p>
                 <div class="btn-group">
                     <a href="#projects" class="btn btn-primary">View My Work</a>
@@ -383,6 +349,7 @@
                             <span class="skill-tag">OpenCV</span>
                             <span class="skill-tag">PyTorch / TensorFlow</span>
                             <span class="skill-tag">YOLOv8</span>
+                            <span class="skill-tag">NVIDIA Jetson</span>
                         </div>
                     </div>
                 </div>
@@ -431,24 +398,26 @@
                     </div>
                 </div>
 
-                <div>
+               <div>
                     <h2 class="section-title">Certifications</h2>
                     
-                    <a href="#" class="card cert-card" style="margin-bottom: 20px;">
-                        <img src="assets/img/udemy_ros2.png" alt="ROS 2 Course" class="cert-img" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Udemy_logo.svg/2560px-Udemy_logo.svg.png'">
-                        <div class="cert-info">
-                            <h3>Self Driving and ROS 2 – Learn by Doing!</h3>
-                            <div class="text-muted" style="font-size:0.9rem;">Udemy · Nov 2025</div>
+                    <div class="card" style="margin-bottom: 20px;">
+                        <div style="width: 100%; height: 160px; background: #1e293b; border-radius: 8px; margin-bottom: 15px; overflow: hidden;">
+                            <img src="assets/img/certif_ros2.jpg" alt="Certificat ROS 2" 
+                                 style="width: 100%; height: 100%; object-fit: cover;">
                         </div>
-                    </a>
+                        <h3 style="margin:0; font-size:1.1rem;">Self Driving and ROS 2</h3>
+                        <div class="text-muted" style="font-size:0.9rem;">Udemy · Nov 2025</div>
+                    </div>
 
-                    <a href="#" class="card cert-card">
-                        <img src="assets/img/udemy_3d.png" alt="3D Reconstruction" class="cert-img" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Udemy_logo.svg/2560px-Udemy_logo.svg.png'">
-                        <div class="cert-info">
-                            <h3>3D Reconstruction from Multi-View Images</h3>
-                            <div class="text-muted" style="font-size:0.9rem;">Udemy · Nov 2025</div>
+                    <div class="card">
+                        <div style="width: 100%; height: 160px; background: #1e293b; border-radius: 8px; margin-bottom: 15px; overflow: hidden;">
+                            <img src="assets/img/certif_3d.jpg" alt="Certificat 3D Vision" 
+                                 style="width: 100%; height: 100%; object-fit: cover;">
                         </div>
-                    </a>
+                        <h3 style="margin:0; font-size:1.1rem;">3D Reconstruction Multi-View</h3>
+                        <div class="text-muted" style="font-size:0.9rem;">Udemy · Nov 2025</div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -464,7 +433,7 @@
                     <i class="fas fa-envelope"></i> &nbsp; Say Hello
                 </a>
                 <div style="margin-top: 25px; display: flex; flex-direction: column; gap: 5px;">
-                    <a href="mailto:edohsaturne@gmail.com" class="text-muted hover-accent">edohsaturne@gmail.com</a>
+                    <a href="mailto:edohsaturne@gmail.com" class="text-muted">edohsaturne@gmail.com</a>
                     <span class="text-muted">(+33) 6 50 07 69 74</span>
                 </div>
             </div>
