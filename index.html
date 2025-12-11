@@ -30,7 +30,7 @@
         
         html { 
             scroll-behavior: smooth; 
-            scroll-padding-top: calc(var(--header-height) + 20px); /* Fixes anchor click offset */
+            scroll-padding-top: calc(var(--header-height) + 20px);
         }
         
         body {
@@ -53,7 +53,7 @@
         .text-accent { color: var(--accent); }
         .text-muted { color: var(--muted); }
         .text-center { text-align: center; }
-        .mono { font-family: 'JetBrains Mono', monospace; } /* For code-like text */
+        .mono { font-family: 'JetBrains Mono', monospace; }
 
         /* Layout */
         .wrap { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; }
@@ -100,6 +100,20 @@
         /* HERO */
         .hero { padding: 60px 0; display: flex; align-items: center; justify-content: space-between; gap: 40px; }
         .hero-content { flex: 1; }
+        
+        /* Status Badge for "Vendeur" aspect */
+        .status-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(16, 185, 129, 0.1); color: #34d399;
+            padding: 6px 12px; border-radius: 20px; font-size: 0.85rem; font-weight: 600;
+            border: 1px solid rgba(16, 185, 129, 0.2); margin-bottom: 20px;
+        }
+        .status-dot {
+            width: 8px; height: 8px; background: #34d399; border-radius: 50%;
+            box-shadow: 0 0 10px #34d399; animation: pulse 2s infinite;
+        }
+        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
+
         .hero-content h1 {
             font-size: 3.5rem; line-height: 1.1; margin-bottom: 20px;
             background: linear-gradient(to right, #fff, #94a3b8); 
@@ -107,7 +121,7 @@
         }
         .hero-content .subtitle {
             font-size: 1.25rem; color: var(--accent); margin-bottom: 24px; font-weight: 500;
-            display: inline-block; padding: 5px 12px; background: rgba(96, 165, 250, 0.1); border-radius: 6px;
+            display: inline-block;
         }
         .hero-content p { font-size: 1.1rem; color: var(--muted); margin-bottom: 35px; max-width: 580px; }
         
@@ -186,6 +200,16 @@
         .timeline-loc { font-size: 1rem; color: var(--muted); margin-bottom: 12px; font-style: italic; }
         .timeline-item ul li { margin-bottom: 8px; }
 
+        /* CERTIFICATION CARDS (New) */
+        .cert-card {
+            flex-direction: row; align-items: center; gap: 20px; padding: 20px;
+        }
+        .cert-img {
+            width: 70px; height: 70px; border-radius: 8px; object-fit: cover;
+            border: 1px solid var(--border); background: #fff; padding: 2px;
+        }
+        .cert-info h3 { font-size: 1.1rem; margin-bottom: 5px; line-height: 1.3; }
+        
         /* SKILLS */
         .skill-category { margin-bottom: 24px; }
         .skill-title { color: white; font-weight: 600; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; font-size: 1.1rem; }
@@ -214,10 +238,11 @@
             .hero-content h1 { font-size: 2.5rem; }
             .hero-img img { width: 220px; height: 220px; }
             .nav-container { flex-direction: column; gap: 15px; padding-bottom: 10px; }
-            header { height: auto; position: relative; } /* Unstick header on mobile if content is tall */
+            header { height: auto; position: relative; } 
             nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; }
             nav a { margin: 0; }
             .btn-group { justify-content: center; }
+            .cert-card { flex-direction: column; text-align: center; }
         }
     </style>
 </head>
@@ -241,8 +266,14 @@
 
         <section id="about" class="hero animate-in">
             <div class="hero-content">
-                <div class="subtitle mono">Embedded AI & Mobile Robotics Engineer</div>
+                <div class="status-badge">
+                    <div class="status-dot"></div>
+                    Open to Work
+                </div>
+                
                 <h1>Saturnin Agbotame</h1>
+                <div class="subtitle mono">Embedded AI & Mobile Robotics Engineer</div>
+                
                 <p>
                     Specializing in <strong>perception, localization, and multi-sensor fusion</strong>. 
                     I hold a Master's degree in Intelligent Robotics & Embedded Systems from the University of Toulon.
@@ -402,14 +433,22 @@
 
                 <div>
                     <h2 class="section-title">Certifications</h2>
-                    <div class="card" style="margin-bottom: 20px;">
-                        <h3 style="margin:0; font-size:1.1rem;">Self Driving and ROS 2 – Learn by Doing!</h3>
-                        <div class="text-muted" style="font-size:0.9rem;">Udemy · Nov 2025</div>
-                    </div>
-                    <div class="card">
-                        <h3 style="margin:0; font-size:1.1rem;">3D Reconstruction from Multi-View Images</h3>
-                        <div class="text-muted" style="font-size:0.9rem;">Udemy · Nov 2025</div>
-                    </div>
+                    
+                    <a href="#" class="card cert-card" style="margin-bottom: 20px;">
+                        <img src="assets/img/udemy_ros2.png" alt="ROS 2 Course" class="cert-img" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Udemy_logo.svg/2560px-Udemy_logo.svg.png'">
+                        <div class="cert-info">
+                            <h3>Self Driving and ROS 2 – Learn by Doing!</h3>
+                            <div class="text-muted" style="font-size:0.9rem;">Udemy · Nov 2025</div>
+                        </div>
+                    </a>
+
+                    <a href="#" class="card cert-card">
+                        <img src="assets/img/udemy_3d.png" alt="3D Reconstruction" class="cert-img" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Udemy_logo.svg/2560px-Udemy_logo.svg.png'">
+                        <div class="cert-info">
+                            <h3>3D Reconstruction from Multi-View Images</h3>
+                            <div class="text-muted" style="font-size:0.9rem;">Udemy · Nov 2025</div>
+                        </div>
+                    </a>
                 </div>
             </div>
         </section>
