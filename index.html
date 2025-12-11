@@ -6,7 +6,9 @@
     <meta name="description" content="Portfolio of Saturnin Agbotame - Robotics & Computer Vision Engineer" />
     <meta name="author" content="Edoh Saturnin Agbotame" />
     <title>Saturnin Robotics | Portfolio</title>
+    
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
@@ -59,18 +61,17 @@
         .wrap { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; }
         .section-spacer { margin-top: 100px; }
         
-        /* Animation */
+        /* Animation Fade In */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
         .animate-in { animation: fadeIn 0.8s ease-out forwards; }
 
-        /* HEADER */
+        /* HEADER & NAV */
         header {
-            background: rgba(11, 18, 32, 0.85); 
+            background: rgba(11, 18, 32, 0.95); /* Plus opaque pour la lisibilité */
             backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border);
             position: sticky; 
             top: 0; 
@@ -80,13 +81,13 @@
             align-items: center;
         }
         .nav-container { display: flex; justify-content: space-between; align-items: center; width: 100%; }
-        .logo { font-weight: 700; font-size: 1.3rem; letter-spacing: -0.5px; }
+        .logo { font-weight: 700; font-size: 1.3rem; letter-spacing: -0.5px; white-space: nowrap;}
         .logo span { color: var(--accent); }
         
+        nav { display: flex; gap: 20px; }
         nav a { 
             color: var(--muted); 
-            margin-left: 28px; 
-            font-size: 0.95rem; 
+            font-size: 0.9rem; 
             font-weight: 500; 
             position: relative;
         }
@@ -111,15 +112,19 @@
         }
         .hero-content p { font-size: 1.1rem; color: var(--muted); margin-bottom: 35px; max-width: 600px; }
         
-        .hero-img { position: relative; }
+        /* PROFILE IMAGE FIX */
+        .hero-img { position: relative; flex-shrink: 0; }
         .hero-img::before {
-            content:''; position: absolute; inset: -10px; border-radius: 50%;
-            background: radial-gradient(circle, var(--accent-glow), transparent 60%);
+            content:''; position: absolute; inset: -15px; border-radius: 50%;
+            background: radial-gradient(circle, var(--accent-glow), transparent 70%);
             z-index: -1;
         }
         .hero-img img {
-            width: 300px; height: 300px; border-radius: 50%; object-fit: cover;
-            border: 2px solid rgba(59,130,246,0.3);
+            width: 280px; height: 280px; 
+            border-radius: 50%; 
+            object-fit: cover; /* Coupe l'image pour qu'elle remplisse le cercle */
+            object-position: center top; /* Centre sur le visage (haut de l'image) */
+            border: 3px solid rgba(59,130,246,0.3);
             box-shadow: 0 10px 40px rgba(0,0,0,0.5);
         }
 
@@ -171,6 +176,21 @@
         }
         .card:hover .pill { background: rgba(59,130,246,0.2); border-color: rgba(59,130,246,0.3); }
 
+        /* CERTIFICATIONS FIX */
+        .cert-img-box {
+            width: 100%; height: 180px; /* Un peu plus haut */
+            background: #020617; /* Fond très sombre pour contraster avec le document */
+            border-radius: 8px; margin-bottom: 15px; 
+            overflow: hidden;
+            display: flex; align-items: center; justify-content: center;
+            border: 1px solid var(--border);
+        }
+        .cert-img-box img {
+            width: 100%; height: 100%;
+            object-fit: contain; /* L'IMAGE ENTIERE EST VISIBLE (pas coupée) */
+            padding: 5px; /* Petite marge interne */
+        }
+
         /* EXPERIENCE TIMELINE */
         .timeline-item {
             border-left: 2px solid var(--border); padding-left: 30px; margin-bottom: 40px; position: relative;
@@ -180,7 +200,6 @@
             background: var(--bg); border: 2px solid var(--accent); border-radius: 50%;
         }
         .timeline-item:hover::before { background: var(--accent); box-shadow: 0 0 15px var(--accent); transition: 0.3s; }
-        
         .timeline-date { color: var(--accent); font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; margin-bottom: 8px; display: block; }
         .timeline-title { font-size: 1.3rem; margin-bottom: 5px; color: white; }
         .timeline-loc { font-size: 1rem; color: var(--muted); margin-bottom: 12px; font-style: italic; }
@@ -206,14 +225,15 @@
         .social-links a:hover { color: var(--accent); background: rgba(59,130,246,0.1); transform: translateY(-3px); }
 
         /* RESPONSIVE */
-        @media(max-width: 768px) {
+        @media(max-width: 900px) {
+            .nav-container { flex-direction: column; gap: 15px; padding-bottom: 15px; }
+            header { height: auto; position: relative; padding: 15px 0; }
+            nav { flex-wrap: wrap; justify-content: center; gap: 15px; }
+            nav a { margin: 0; }
+            
             .hero { flex-direction: column-reverse; text-align: center; padding-top: 30px; }
             .hero-content h1 { font-size: 2.5rem; }
             .hero-img img { width: 220px; height: 220px; }
-            .nav-container { flex-direction: column; gap: 15px; padding-bottom: 10px; }
-            header { height: auto; position: relative; } 
-            nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; }
-            nav a { margin: 0; }
             .btn-group { justify-content: center; }
         }
     </style>
@@ -229,7 +249,7 @@
                 <a href="#projects">Projects</a>
                 <a href="#skills">Skills</a>
                 <a href="#experience">Experience</a>
-                <a href="#contact">Contact</a>
+                <a href="#education">Education</a> <a href="#certifications">Certifications</a> <a href="#contact">Contact</a>
             </nav>
         </div>
     </header>
@@ -252,7 +272,7 @@
                 </div>
             </div>
             <div class="hero-img">
-                <img src="assets/img/profile.jpg" alt="Saturnin Agbotame" onerror="this.src='https://ui-avatars.com/api/?name=Saturnin+Agbotame&background=0D8ABC&color=fff&size=300'">
+                <img src="assets/img/profile.jpg" alt="Saturnin Agbotame">
             </div>
         </section>
 
@@ -262,11 +282,13 @@
                 
                 <article class="card">
                     <div class="project-thumb">
-                        <img src="assets/img/turtlebot_nav.jpg" alt="ROS2 Navigation" onerror="this.src='https://via.placeholder.com/600x400/1e293b/60a5fa?text=ROS2+Navigation'">
+                        <img src="assets/img/turtlebot_nav.jpg" alt="ROS2 Navigation">
                     </div>
                     <h3>Autonomous Navigation & SLAM</h3>
                     <p class="text-muted">LiDAR & depth-camera navigation on TurtleBot2 with ROS 2 and Nav2 stack. Implemented custom behavior trees for obstacle avoidance.</p>
                     
+                    <a href="projet-nav.html" class="text-accent" style="margin-bottom: 15px; display: inline-block;">View Case Study <i class="fas fa-arrow-right"></i></a>
+
                     <div class="tech-stack">
                         <span class="pill">ROS 2</span>
                         <span class="pill">C++</span>
@@ -277,7 +299,7 @@
 
                 <article class="card">
                     <div class="project-thumb">
-                        <img src="assets/img/perception.jpg" alt="Perception" onerror="this.src='https://via.placeholder.com/600x400/1e293b/60a5fa?text=Perception+Fusion'">
+                        <img src="assets/img/perception.jpg" alt="Perception">
                     </div>
                     <h3>Multimodal Perception</h3>
                     <p class="text-muted">Video + Audio fusion pipelines for robust recognition under noisy conditions. Utilized sensor fusion to improve classification accuracy.</p>
@@ -291,7 +313,7 @@
 
                 <article class="card">
                     <div class="project-thumb">
-                        <img src="assets/img/embedded.jpg" alt="Embedded" onerror="this.src='https://via.placeholder.com/600x400/1e293b/60a5fa?text=Embedded+AI'">
+                        <img src="assets/img/embedded.jpg" alt="Embedded">
                     </div>
                     <h3>Real-Time Embedded AI</h3>
                     <p class="text-muted">Task scheduling with TiRTOS and latency-aware classification on microcontroller constraints.</p>
@@ -383,41 +405,38 @@
         </section>
 
         <section id="education" class="section-spacer">
+            <h2 class="section-title">Education</h2>
             <div class="grid">
-                <div>
-                    <h2 class="section-title">Education</h2>
-                    <div class="card" style="margin-bottom: 20px;">
-                        <h3 style="margin:0;">University of Toulon</h3>
-                        <div class="text-accent" style="font-weight:500;">Master – Intelligent Robotics & Embedded Systems</div>
-                        <div class="text-muted" style="font-size:0.9rem;">2023 – 2025</div>
+                <div class="card">
+                    <h3 style="margin:0;">University of Toulon</h3>
+                    <div class="text-accent" style="font-weight:500;">Master – Intelligent Robotics & Embedded Systems</div>
+                    <div class="text-muted" style="font-size:0.9rem;">2023 – 2025</div>
+                </div>
+                <div class="card">
+                    <h3 style="margin:0;">University of Kara (Togo)</h3>
+                    <div class="text-accent" style="font-weight:500;">Bachelor – Applied Physics, Electronics & CS</div>
+                    <div class="text-muted" style="font-size:0.9rem;">2019 – 2022</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="certifications" class="section-spacer">
+            <h2 class="section-title">Certifications</h2>
+            <div class="grid">
+                <div class="card">
+                    <div class="cert-img-box">
+                        <img src="assets/img/certif_ros2.jpg" alt="Certificat ROS 2">
                     </div>
-                    <div class="card">
-                        <h3 style="margin:0;">University of Kara (Togo)</h3>
-                        <div class="text-accent" style="font-weight:500;">Bachelor – Applied Physics, Electronics & CS</div>
-                        <div class="text-muted" style="font-size:0.9rem;">2019 – 2022</div>
-                    </div>
+                    <h3 style="margin:0; font-size:1.1rem;">Self Driving and ROS 2</h3>
+                    <div class="text-muted" style="font-size:0.9rem;">Udemy · Nov 2025</div>
                 </div>
 
-               <div>
-                    <h2 class="section-title">Certifications</h2>
-                    
-                    <div class="card" style="margin-bottom: 20px;">
-                        <div style="width: 100%; height: 160px; background: #1e293b; border-radius: 8px; margin-bottom: 15px; overflow: hidden;">
-                            <img src="assets/img/certif_ros2.jpg" alt="Certificat ROS 2" 
-                                 style="width: 100%; height: 100%; object-fit: cover;">
-                        </div>
-                        <h3 style="margin:0; font-size:1.1rem;">Self Driving and ROS 2</h3>
-                        <div class="text-muted" style="font-size:0.9rem;">Udemy · Nov 2025</div>
+                <div class="card">
+                    <div class="cert-img-box">
+                        <img src="assets/img/certif_3d.jpg" alt="Certificat 3D Vision">
                     </div>
-
-                    <div class="card">
-                        <div style="width: 100%; height: 160px; background: #1e293b; border-radius: 8px; margin-bottom: 15px; overflow: hidden;">
-                            <img src="assets/img/certif_3d.jpg" alt="Certificat 3D Vision" 
-                                 style="width: 100%; height: 100%; object-fit: cover;">
-                        </div>
-                        <h3 style="margin:0; font-size:1.1rem;">3D Reconstruction Multi-View</h3>
-                        <div class="text-muted" style="font-size:0.9rem;">Udemy · Nov 2025</div>
-                    </div>
+                    <h3 style="margin:0; font-size:1.1rem;">3D Reconstruction Multi-View</h3>
+                    <div class="text-muted" style="font-size:0.9rem;">Udemy · Nov 2025</div>
                 </div>
             </div>
         </section>
