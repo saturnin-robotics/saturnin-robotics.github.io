@@ -1,293 +1,356 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <meta name="description" content="Portfolio de Saturnin Agbotame - Ingénieur Robotique Mobile & IA Embarquée" />
+    <meta name="description" content="Portfolio of Saturnin Agbotame - Mobile Robotics & Embedded AI Engineer" />
     <meta name="author" content="Edoh Saturnin Agbotame" />
     <title>Saturnin Robotics | Portfolio</title>
     <link rel="icon" href="assets/img/favicon.ico">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 
     <style>
         :root{
             --bg:#0b1220;
             --card:#0f1724;
-            --muted:#a8b3c7;
-            --accent:#60a5fa;   /* Bleu clair */
-            --accent-2:#3b82f6; /* Bleu vif */
-            --glass: rgba(255,255,255,0.04);
-            --radius:14px;
+            --muted:#94a3b8;
+            --text:#e2e8f0;
+            --accent:#60a5fa;   /* Light Blue */
+            --accent-2:#3b82f6; /* Vivid Blue */
+            --glass: rgba(255,255,255,0.03);
+            --border: rgba(255,255,255,0.05);
+            --radius:16px;
             --max-width:1100px;
-            --gap:18px;
+            --gap:24px;
         }
 
-        /* Base */
+        /* Base Reset */
         *{box-sizing:border-box}
         html{scroll-behavior:smooth}
         body{
-            margin:0;
-            font-family:'Poppins',system-ui,sans-serif;
-            background:
-                radial-gradient(800px 500px at 10% 10%, rgba(59,130,246,0.06), transparent 6%),
-                radial-gradient(600px 400px at 90% 90%, rgba(96,165,250,0.04), transparent 6%),
-                var(--bg);
-            color:#e6eef8;
-            line-height:1.6;
-            padding-bottom:60px;
+            margin:0; font-family:'Poppins', sans-serif;
+            background: radial-gradient(circle at 10% 10%, rgba(59,130,246,0.08), transparent 20%),
+                        radial-gradient(circle at 90% 90%, rgba(96,165,250,0.05), transparent 20%),
+                        var(--bg);
+            color:var(--text); line-height:1.6; padding-bottom:80px;
         }
+        a{color:inherit; text-decoration: none; transition: 0.2s;}
+        ul {padding-left: 20px;}
+        
+        /* Layout */
+        .wrap{max-width:var(--max-width);margin:0 auto;padding:0 24px;}
+        .section-spacer {margin-top: 80px;}
 
-        a{color:inherit; text-decoration: none;}
-        
-        /* Layout Wrappers */
-        .wrap{max-width:var(--max-width);margin:0 auto;padding:28px;}
-        
         /* HEADER */
         header{
-            background:linear-gradient(135deg,var(--accent-2),#0ea5e9 70%);
-            border-radius:16px;
-            padding:28px 36px;
-            color:white;
-            margin:20px 20px 10px;
-            box-shadow: 0 8px 30px rgba(2,6,23,0.6);
-            display:flex; flex-wrap: wrap;
-            align-items:center; justify-content:space-between; gap:20px;
+            background: rgba(15, 23, 36, 0.7); backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            position: sticky; top: 0; z-index: 100; padding: 16px 0;
         }
-        header h1{font-size:1.8rem;margin:0;font-weight:700;}
-        header p{margin:4px 0 0;font-weight:500;opacity:0.95}
+        .nav-container {display: flex; justify-content: space-between; align-items: center;}
+        .logo {font-weight: 700; font-size: 1.2rem; letter-spacing: -0.5px;}
+        .logo span {color: var(--accent);}
         
-        /* Navigation */
-        nav{
-            display:flex;justify-content:center;gap:15px; flex-wrap: wrap;
-            margin:20px 20px;
-        }
-        nav a{color:var(--muted);padding:8px 16px;border-radius:10px;font-weight:600;transition:0.2s;}
-        nav a:hover{color:var(--accent);background:var(--glass)}
-        nav a.active{background:rgba(255,255,255,0.08);color:white}
-
-        /* HERO SECTION */
-        .hero{
-            display:flex; align-items:center; justify-content:space-between; gap:40px;
-            margin:20px; padding:40px;
-            background:linear-gradient(180deg, rgba(255,255,255,0.03), transparent);
-            border-radius:var(--radius);
-            box-shadow: 0 6px 20px rgba(2,6,23,0.5);
-            border: 1px solid rgba(255,255,255,0.05);
-        }
-        .hero-left{flex:2;}
-        .hero h2{font-size:2.4rem;margin:0 0 15px;font-weight:700; background: -webkit-linear-gradient(#fff, #94a3b8); -webkit-background-clip: text; -webkit-text-fill-color: transparent;}
-        .hero p{margin:0 0 25px;color:var(--muted);font-size:1.1rem;}
+        nav a {color: var(--muted); margin-left: 24px; font-size: 0.95rem; font-weight: 500;}
+        nav a:hover, nav a.active {color: var(--accent);}
         
-        .hero-right{flex:1; display: flex; justify-content: center;}
-        .hero-right img {
-            width: 180px; height: 180px; border-radius: 50%; 
-            object-fit: cover; border: 4px solid rgba(59,130,246,0.3);
-            box-shadow: 0 0 30px rgba(59,130,246,0.2);
+        /* HERO */
+        .hero {
+            padding: 80px 0; display: flex; align-items: center; gap: 50px;
+        }
+        .hero-content h1 {
+            font-size: 3rem; line-height: 1.1; margin: 0 0 20px;
+            background: linear-gradient(to right, #fff, #94a3b8); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .hero-content .subtitle {
+            font-size: 1.25rem; color: var(--accent); margin-bottom: 24px; font-weight: 500;
+        }
+        .hero-content p {font-size: 1.1rem; color: var(--muted); margin-bottom: 30px; max-width: 600px;}
+        
+        .hero-img img {
+            width: 280px; height: 280px; border-radius: 50%; object-fit: cover;
+            border: 4px solid rgba(59,130,246,0.2); box-shadow: 0 0 50px rgba(59,130,246,0.15);
         }
 
-        .cta-group {display: flex; gap: 15px;}
-        .btn-primary {background: var(--accent-2); color: white; padding: 10px 20px; border-radius: 8px; font-weight: 600;}
-        .btn-ghost {border: 1px solid var(--muted); color: var(--muted); padding: 10px 20px; border-radius: 8px; font-weight: 600;}
-        .btn-primary:hover {transform: translateY(-2px); box-shadow: 0 5px 15px rgba(59,130,246,0.4);}
+        /* BUTTONS */
+        .btn {
+            display: inline-flex; align-items: center; gap: 10px;
+            padding: 12px 24px; border-radius: 8px; font-weight: 600;
+        }
+        .btn-primary {background: var(--accent-2); color: white;}
+        .btn-primary:hover {background: var(--accent); transform: translateY(-2px);}
+        .btn-outline {border: 1px solid var(--border); color: var(--text);}
+        .btn-outline:hover {border-color: var(--accent); color: var(--accent);}
 
-        /* TITRES SECTIONS */
-        .section-title{
-            margin:50px 0 25px; text-align:center; 
-            color:var(--accent); font-weight:700; text-transform: uppercase; letter-spacing: 1px;
-        }
-
-        /* CARDS (Projets & Expérience) */
-        .grid-container{
-            display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));
-            gap:var(--gap); margin:0 20px;
-        }
+        /* GRID SYSTEM */
+        .grid {display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: var(--gap);}
         
-        .card{
-            background:rgba(255,255,255,0.02);
-            padding:20px; border-radius:16px; border:1px solid rgba(255,255,255,0.04);
-            transition:transform .3s, box-shadow .3s;
-            display:flex; flex-direction:column;
+        /* CARDS */
+        .card {
+            background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+            padding: 24px; transition: transform 0.3s, border-color 0.3s; display: flex; flex-direction: column;
         }
-        .card:hover{transform:translateY(-5px); box-shadow:0 10px 30px rgba(0,0,0,0.3); border-color:var(--accent-2);}
+        .card:hover {transform: translateY(-5px); border-color: var(--accent-2);}
         
+        /* Project Specifics */
         .project-thumb {
-            height: 160px; background: #1e293b; border-radius: 8px; margin-bottom: 15px;
-            display: flex; align-items: center; justify-content: center; overflow: hidden;
+            height: 180px; background: #1e293b; border-radius: 8px; margin-bottom: 20px; overflow: hidden;
         }
-        .project-thumb img {width: 100%; height: 100%; object-fit: cover; opacity: 0.8; transition: 0.3s;}
-        .card:hover .project-thumb img {opacity: 1; transform: scale(1.05);}
+        .project-thumb img {width: 100%; height: 100%; object-fit: cover; transition: 0.5s;}
+        .card:hover .project-thumb img {transform: scale(1.05);}
+        .tech-stack {display: flex; gap: 8px; flex-wrap: wrap; margin-top: auto; padding-top: 15px;}
+        .pill {font-size: 0.75rem; padding: 4px 10px; background: rgba(59,130,246,0.1); color: var(--accent); border-radius: 20px;}
 
-        .card h3 {margin: 0 0 8px; color: white;}
-        .card h4 {margin: 0 0 10px; color: var(--accent); font-size: 0.9rem; font-weight: 500;}
-        .card p {color: var(--muted); font-size: 0.95rem; flex-grow: 1;}
+        /* Experience & Education */
+        .timeline-item {
+            border-left: 2px solid var(--border); padding-left: 24px; margin-bottom: 30px; position: relative;
+        }
+        .timeline-item::before {
+            content: ''; position: absolute; left: -6px; top: 6px; width: 10px; height: 10px;
+            background: var(--accent); border-radius: 50%; box-shadow: 0 0 10px var(--accent);
+        }
+        .timeline-date {color: var(--accent); font-size: 0.9rem; font-weight: 600; margin-bottom: 4px; display: block;}
+        .timeline-title {font-size: 1.2rem; margin: 0 0 5px; color: white;}
+        .timeline-loc {font-size: 1rem; color: var(--muted); margin-bottom: 10px; font-style: italic;}
+
+        /* SKILLS */
+        .skill-category {margin-bottom: 20px;}
+        .skill-title {color: white; font-weight: 600; margin-bottom: 10px; display: flex; align-items: center; gap: 10px;}
+        .skill-list {display: flex; flex-wrap: wrap; gap: 10px;}
+        .skill-tag {
+            background: var(--glass); border: 1px solid var(--border); padding: 8px 16px;
+            border-radius: 8px; font-size: 0.9rem;
+        }
         
-        .tags{display:flex;gap:8px;flex-wrap:wrap; margin-top: 15px;}
-        .tag{font-size:0.75rem;padding:4px 10px;border-radius:20px;background:rgba(59,130,246,0.15);color:#93c5fd; border: 1px solid rgba(59,130,246,0.2);}
-
-        /* SKILLS SECTION */
-        .skills-wrap {
-            display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin: 0 20px;
-        }
-        .skill-pill {
-            background: rgba(255,255,255,0.05); padding: 10px 20px; border-radius: 8px;
-            color: white; font-weight: 500; display: flex; align-items: center; gap: 10px;
-            border: 1px solid rgba(255,255,255,0.05);
-        }
-        .skill-pill i {color: var(--accent);}
-
         /* FOOTER */
-        footer {text-align: center; padding: 40px; color: var(--muted); font-size: 0.9rem;}
-        
+        footer {text-align: center; color: var(--muted); margin-top: 80px; border-top: 1px solid var(--border); padding-top: 40px;}
+        .social-links {display: flex; justify-content: center; gap: 20px; margin-bottom: 20px;}
+        .social-links a {font-size: 1.5rem; color: var(--muted);}
+        .social-links a:hover {color: var(--accent);}
+
         /* Responsive */
-        @media (max-width: 768px) {
+        @media(max-width: 768px) {
             .hero {flex-direction: column-reverse; text-align: center;}
-            header {flex-direction: column; text-align: center;}
+            .hero-img img {width: 200px; height: 200px;}
+            .nav-container {flex-direction: column; gap: 15px;}
+            nav a {margin: 0 10px;}
         }
     </style>
 </head>
 
 <body>
 
-<header class="wrap">
-    <div>
-        <h1>Saturnin Agbotame</h1>
-        <p>Ingénieur Robotique Mobile & IA Embarquée</p>
-    </div>
-    <div style="display:flex; gap:15px;">
-        <a href="https://github.com/saturnin-robotics" target="_blank" class="btn-ghost"><i class="fab fa-github"></i> GitHub</a>
-        <a href="https://www.linkedin.com/in/edoh-saturnin-agbotame" target="_blank" class="btn-primary"><i class="fab fa-linkedin"></i> LinkedIn</a>
-    </div>
-</header>
-
-<nav class="wrap">
-    <a href="#about" class="active">À propos</a>
-    <a href="#projects">Projets</a>
-    <a href="#experience">Expérience</a>
-    <a href="#skills">Compétences</a>
-    <a href="#contact">Contact</a>
-</nav>
-
-<main class="wrap">
-
-<section id="about" class="hero">
-    <div class="hero-left">
-        <h2>Perception, Localisation & Fusion Multi-Capteurs</h2>
-        <p>
-            Ingénieur spécialisé en robotique mobile autonome. Passionné par l'intégration d'algorithmes complexes (SLAM, CNN) sur des systèmes embarqués contraints.
-            <br><br>
-            Diplômé du Master <strong>Robotique Intelligente & Systèmes Embarqués</strong> de l'Université de Toulon.
-        </p>
-        <div class="cta-group">
-            <a href="#projects" class="btn-primary">Voir mes Robots</a>
-            <a href="mailto:edohsaturne@gmail.com" class="btn-ghost">Me contacter</a>
+    <header>
+        <div class="wrap nav-container">
+            <div class="logo">Saturnin<span>.Robotics</span></div>
+            <nav>
+                <a href="#about">About</a>
+                <a href="#projects">Projects</a>
+                <a href="#experience">Experience</a>
+                <a href="#education">Education</a>
+                <a href="#contact">Contact</a>
+            </nav>
         </div>
-    </div>
-    <div class="hero-right">
-        <img src="assets/img/profile.jpg" alt="Saturnin Agbotame">
-    </div>
-</section>
+    </header>
 
-<h3 id="projects" class="section-title">Projets Phares</h3>
-<div class="grid-container">
+    <main class="wrap">
 
-    <article class="card">
-        <div class="project-thumb">
-            <img src="assets/img/turtlebot_nav.jpg" alt="Navigation Autonome" onerror="this.src='https://via.placeholder.com/640x360.png?text=ROS2+Navigation'">
+        <section id="about" class="hero">
+            <div class="hero-content">
+                <div class="subtitle">Embedded AI & Mobile Robotics Engineer</div>
+                <h1>Saturnin Agbotame</h1>
+                <p>
+                    Specializing in perception, localization, and multi-sensor fusion. 
+                    I hold a Master's degree in Intelligent Robotics & Embedded Systems from the University of Toulon.
+                    <br><br>
+                    I enjoy building reproducible pipelines that bridge hardware constraints (STM32/PIC) and high-level autonomy (ROS2).
+                </p>
+                <div style="display: flex; gap: 15px; flex-wrap: wrap; justify-content: inherit;">
+                    <a href="#projects" class="btn btn-primary">View My Work</a>
+                    <a href="#contact" class="btn btn-outline">Contact Me</a>
+                </div>
+            </div>
+            <div class="hero-img">
+                <img src="assets/img/profile.jpg" alt="Saturnin Agbotame">
+            </div>
+        </section>
+
+        <section id="projects" class="section-spacer">
+            <h2 style="font-size: 2rem; margin-bottom: 30px;">Featured Projects</h2>
+            <div class="grid">
+                
+                <article class="card">
+                    <div class="project-thumb">
+                        <img src="assets/img/turtlebot_nav.jpg" alt="ROS2 Navigation" onerror="this.src='https://via.placeholder.com/600x400/1e293b/60a5fa?text=ROS2+Navigation'">
+                    </div>
+                    <h3>Autonomous Navigation & SLAM</h3>
+                    <p style="color:var(--muted); margin-bottom:15px;">LiDAR & depth-camera navigation on TurtleBot2 with ROS2 and Nav2.</p>
+                    
+                    <a href="project-nav.html" class="btn btn-outline" style="justify-content:center; margin-bottom:15px;">View Details <i class="fas fa-arrow-right"></i></a>
+                    
+                    <div class="tech-stack">
+                        <span class="pill">ROS 2</span>
+                        <span class="pill">C++</span>
+                        <span class="pill">Nav2</span>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <div class="project-thumb">
+                        <img src="assets/img/perception.jpg" alt="Perception" onerror="this.src='https://via.placeholder.com/600x400/1e293b/60a5fa?text=Perception+Fusion'">
+                    </div>
+                    <h3>Multimodal Perception</h3>
+                    <p style="color:var(--muted); margin-bottom:15px;">Video + Audio fusion pipelines for robust recognition under noisy conditions.</p>
+                    
+                    <a href="#" class="btn btn-outline" style="justify-content:center; margin-bottom:15px;">Coming Soon</a>
+                    
+                    <div class="tech-stack">
+                        <span class="pill">Python</span>
+                        <span class="pill">Deep Learning</span>
+                        <span class="pill">Fusion</span>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <div class="project-thumb">
+                        <img src="assets/img/embedded.jpg" alt="Embedded" onerror="this.src='https://via.placeholder.com/600x400/1e293b/60a5fa?text=Embedded+AI'">
+                    </div>
+                    <h3>Real-Time Embedded AI</h3>
+                    <p style="color:var(--muted); margin-bottom:15px;">Task scheduling with TiRTOS and latency-aware classification.</p>
+                    
+                     <a href="#" class="btn btn-outline" style="justify-content:center; margin-bottom:15px;">Coming Soon</a>
+                    
+                    <div class="tech-stack">
+                        <span class="pill">STM32</span>
+                        <span class="pill">TiRTOS</span>
+                        <span class="pill">CUDA</span>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section id="skills" class="section-spacer">
+            <h2 style="font-size: 2rem; margin-bottom: 30px;">Technical Skills</h2>
+            <div class="card">
+                <div class="skill-category">
+                    <div class="skill-title"><i class="fas fa-code"></i> Programming & Tools</div>
+                    <div class="skill-list">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">C / C++ (Embedded)</span>
+                        <span class="skill-tag">MATLAB / Simulink</span>
+                        <span class="skill-tag">Git & CI/CD</span>
+                        <span class="skill-tag">Docker</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <div class="skill-title"><i class="fas fa-robot"></i> Robotics & Navigation</div>
+                    <div class="skill-list">
+                        <span class="skill-tag">ROS 2 (Nav2)</span>
+                        <span class="skill-tag">SLAM (Visual & LiDAR)</span>
+                        <span class="skill-tag">Path Planning (A*)</span>
+                        <span class="skill-tag">Kalman Filter / EKF</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <div class="skill-title"><i class="fas fa-microchip"></i> Embedded & Electronics</div>
+                    <div class="skill-list">
+                        <span class="skill-tag">Firmware (STM32, PIC)</span>
+                        <span class="skill-tag">RTOS</span>
+                        <span class="skill-tag">I2C / SPI / UART</span>
+                        <span class="skill-tag">ESP32 Integration</span>
+                    </div>
+                </div>
+                 <div class="skill-category" style="margin-bottom:0">
+                    <div class="skill-title"><i class="fas fa-brain"></i> AI & Computer Vision</div>
+                    <div class="skill-list">
+                        <span class="skill-tag">Deep Learning (CNN, RNN)</span>
+                        <span class="skill-tag">Computer Vision</span>
+                        <span class="skill-tag">Neural Networks</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" class="section-spacer">
+            <h2 style="font-size: 2rem; margin-bottom: 30px;">Experience</h2>
+            
+            <div class="timeline-item">
+                <span class="timeline-date">Apr. 2025 – Aug. 2025</span>
+                <h3 class="timeline-title">Embedded AI Intern</h3>
+                <div class="timeline-loc">LIGM Laboratory</div>
+                <ul style="color: var(--muted);">
+                    <li>Real-time scheduling and optimization of embedded CNN pipelines (CUDA).</li>
+                    <li>Definition of performance metrics, uncertainty estimation, and evaluation benches for perception tasks.</li>
+                </ul>
+            </div>
+
+            <div class="timeline-item">
+                <span class="timeline-date">Nov. 2022 – Jul. 2023</span>
+                <h3 class="timeline-title">Electronics & IoT Intern</h3>
+                <div class="timeline-loc">LaMERE Laboratory</div>
+                <ul style="color: var(--muted);">
+                    <li>Firmware development for PIC/STM32 (sensor acquisition, interrupts, preprocessing).</li>
+                    <li>IoT node integration with ESP32 and robust communication for distributed sensors.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="education" class="section-spacer">
+            <div class="grid">
+                <div>
+                    <h2 style="font-size: 2rem; margin-bottom: 30px;">Education</h2>
+                    <div class="card" style="margin-bottom: 20px;">
+                        <h3 style="margin:0;">University of Toulon</h3>
+                        <div style="color:var(--accent); font-weight:500;">Master – Intelligent Robotics & Embedded Systems</div>
+                        <div style="color:var(--muted); font-size:0.9rem;">2023 – 2025</div>
+                    </div>
+                    <div class="card">
+                        <h3 style="margin:0;">University of Kara (Togo)</h3>
+                        <div style="color:var(--accent); font-weight:500;">Bachelor – Applied Physics, Electronics & CS</div>
+                        <div style="color:var(--muted); font-size:0.9rem;">2019 – 2022</div>
+                    </div>
+                </div>
+
+                <div>
+                    <h2 style="font-size: 2rem; margin-bottom: 30px;">Certifications</h2>
+                    <div class="card" style="margin-bottom: 20px;">
+                        <h3 style="margin:0; font-size:1.1rem;">Self Driving and ROS 2 – Learn by Doing!</h3>
+                        <div style="color:var(--muted); font-size:0.9rem;">Udemy · Instructor: Antonio Brandi · Nov 2025</div>
+                    </div>
+                    <div class="card">
+                        <h3 style="margin:0; font-size:1.1rem;">3D Reconstruction from Multi-View Images</h3>
+                        <div style="color:var(--muted); font-size:0.9rem;">Udemy · Instructor: Antonio Brandi · Nov 2025</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section-spacer" style="margin-bottom: 40px;">
+             <div class="card" style="text-align: center; max-width: 600px; margin: 0 auto;">
+                <h2>Get In Touch</h2>
+                <p style="color: var(--muted); margin-bottom: 30px;">
+                    Currently open for opportunities in Mobile Robotics and Embedded AI. 
+                    Based in Amiens, France (80080).
+                </p>
+                <a href="mailto:edohsaturne@gmail.com" class="btn btn-primary" style="justify-content: center; font-size: 1.1rem;">
+                    <i class="fas fa-envelope"></i> edohsaturne@gmail.com
+                </a>
+                <p style="margin-top: 15px; color: var(--muted);">(+33) 6 50 07 69 74</p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="wrap">
+            <div class="social-links">
+                <a href="https://github.com/saturnin-robotics" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/edoh-saturnin-agbotame" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <p>&copy; 2025 Saturnin Agbotame. All Rights Reserved.</p>
         </div>
-        <h3>Navigation Autonome & SLAM</h3>
-        <p>Déploiement d'une stack de navigation complète sur TurtleBot2. Cartographie Lidar, planification de trajectoire et évitement d'obstacles dynamiques.</p>
-        <div class="tags">
-            <span class="tag">ROS 2</span>
-            <span class="tag">Nav2</span>
-            <span class="tag">Gazebo</span>
-            <span class="tag">C++</span>
-        </div>
-    </article>
-
-    <article class="card">
-        <div class="project-thumb">
-            <img src="assets/img/fusion.jpg" alt="Perception" onerror="this.src='https://via.placeholder.com/640x360.png?text=Perception+Fusion'">
-        </div>
-        <h3>Perception Multimodale</h3>
-        <p>Conception d'un pipeline de fusion vidéo + audio pour la reconnaissance robuste en environnement bruité. Évaluation des performances en temps réel.</p>
-        <div class="tags">
-            <span class="tag">Python</span>
-            <span class="tag">Deep Learning</span>
-            <span class="tag">Sensor Fusion</span>
-        </div>
-    </article>
-
-    <article class="card">
-        <div class="project-thumb">
-            <img src="assets/img/embedded.jpg" alt="Embedded AI" onerror="this.src='https://via.placeholder.com/640x360.png?text=Embedded+AI'">
-        </div>
-        <h3>IA Embarquée Temps Réel</h3>
-        <p>Ordonnancement de tâches avec TiRTOS et classification optimisée sur matériel limité. Gestion de la latence et consommation énergétique.</p>
-        <div class="tags">
-            <span class="tag">TiRTOS</span>
-            <span class="tag">STM32</span>
-            <span class="tag">CUDA</span>
-        </div>
-    </article>
-
-</div>
-
-<h3 id="experience" class="section-title">Parcours</h3>
-<div class="grid-container">
-    
-    <div class="card" style="border-left: 4px solid var(--accent);">
-        <h3>Ingénieur Stagiaire IA Embarquée</h3>
-        <h4>Laboratoire LIGM | Avril 2025 – Août 2025</h4>
-        <p>Ordonnancement temps réel et optimisation de pipelines CNN embarqués (CUDA). Définition de métriques de performance et estimation d'incertitude pour la perception.</p>
-    </div>
-
-    <div class="card" style="border-left: 4px solid var(--accent);">
-        <h3>Stagiaire Électronique & IoT</h3>
-        <h4>Laboratoire LaMERE | Nov 2022 – Juil 2023</h4>
-        <p>Développement Firmware PIC/STM32 (acquisition capteurs, interruptions). Intégration de nœuds IoT avec ESP32 pour réseaux de capteurs distribués.</p>
-    </div>
-
-    <div class="card" style="border-left: 4px solid var(--accent-2);">
-        <h3>Master Robotique Intelligente</h3>
-        <h4>Université de Toulon | 2023 – 2025</h4>
-        <p>Systèmes Embarqués, ROS 2, Vision par Ordinateur, Contrôle commande.</p>
-    </div>
-
-</div>
-
-<h3 id="skills" class="section-title">Stack Technique</h3>
-<div class="skills-wrap">
-    <div class="skill-pill"><i class="fas fa-code"></i> C++ / Python</div>
-    <div class="skill-pill"><i class="fas fa-robot"></i> ROS 2 (Humble)</div>
-    <div class="skill-pill"><i class="fas fa-microchip"></i> STM32 / ESP32</div>
-    <div class="skill-pill"><i class="fas fa-layer-group"></i> Nav2 / SLAM</div>
-    <div class="skill-pill"><i class="fas fa-brain"></i> TensorFlow / PyTorch</div>
-    <div class="skill-pill"><i class="fas fa-terminal"></i> Linux / Bash / Git</div>
-    <div class="skill-pill"><i class="fas fa-cube"></i> Docker</div>
-    <div class="skill-pill"><i class="fas fa-video"></i> OpenCV</div>
-</div>
-
-<section id="contact" style="margin-top: 60px;">
-    <h3 class="section-title">Contact</h3>
-    <div class="card" style="max-width: 600px; margin: 0 auto; text-align: center;">
-        <p style="font-size: 1.1rem; margin-bottom: 20px;">
-            À la recherche d'opportunités en Robotique Mobile et IA Embarquée.
-        </p>
-        <a href="mailto:edohsaturne@gmail.com" class="btn-primary" style="font-size: 1.2rem;">
-            <i class="fas fa-envelope"></i> edohsaturne@gmail.com
-        </a>
-        <p style="margin-top: 20px; color: var(--muted);">
-            Amiens, France • (+33) 6 50 07 69 74
-        </p>
-    </div>
-</section>
-
-</main>
-
-<footer>
-    <p>© 2025 Saturnin Agbotame. Construit avec passion pour la robotique.</p>
-</footer>
+    </footer>
 
 </body>
 </html>

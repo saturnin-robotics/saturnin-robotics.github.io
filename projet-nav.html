@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Autonomous Navigation - Saturnin Robotics</title>
+    <link rel="icon" href="assets/img/favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+
+    <style>
+        :root{
+            --bg:#0b1220;
+            --card:#0f1724;
+            --muted:#94a3b8;
+            --text:#e2e8f0;
+            --accent:#60a5fa;
+            --accent-2:#3b82f6;
+            --border: rgba(255,255,255,0.05);
+            --radius:16px;
+            --max-width:900px; /* Plus étroit pour la lecture */
+        }
+        *{box-sizing:border-box}
+        body{
+            margin:0; font-family:'Poppins', sans-serif;
+            background: var(--bg); color:var(--text); line-height:1.7; padding-bottom:60px;
+        }
+        a{color:inherit; text-decoration: none;}
+        
+        .wrap{max-width:var(--max-width); margin:0 auto; padding:0 24px;}
+        
+        /* HEADER SIMPLE */
+        header {padding: 20px 0; border-bottom: 1px solid var(--border); margin-bottom: 40px;}
+        .back-link {color: var(--muted); font-weight: 500; display: inline-flex; align-items: center; gap: 8px;}
+        .back-link:hover {color: var(--accent);}
+
+        /* CONTENT */
+        h1 {font-size: 2.5rem; margin-bottom: 10px; color: white;}
+        h2 {color: var(--accent); margin-top: 40px; border-bottom: 1px solid var(--border); padding-bottom: 10px;}
+        
+        .project-meta {
+            display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 30px;
+            color: var(--muted); font-size: 0.95rem;
+        }
+        .meta-item i {color: var(--accent); margin-right: 5px;}
+        
+        /* HERO IMAGE */
+        .project-hero-img {
+            width: 100%; height: 400px; object-fit: cover; border-radius: var(--radius);
+            margin-bottom: 40px; border: 1px solid var(--border);
+        }
+
+        /* TECH STACK */
+        .tech-list {display: flex; gap: 10px; flex-wrap: wrap; margin: 20px 0;}
+        .tech-tag {
+            background: rgba(59,130,246,0.1); color: var(--accent); 
+            padding: 5px 12px; border-radius: 6px; font-size: 0.9rem; font-weight: 500;
+        }
+
+        /* CODE BLOCK (Optionnel) */
+        pre {
+            background: #1e293b; padding: 20px; border-radius: 8px; overflow-x: auto;
+            border: 1px solid var(--border); color: #cbd5e1;
+        }
+
+        /* VIDEO CONTAINER */
+        .video-container {
+            position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: var(--radius); margin: 30px 0;
+        }
+        .video-container iframe {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="wrap">
+        <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Portfolio</a>
+    </header>
+
+    <main class="wrap">
+        
+        <h1>Autonomous Navigation & SLAM</h1>
+        <div class="project-meta">
+            <span class="meta-item"><i class="fas fa-calendar"></i> 2025</span>
+            <span class="meta-item"><i class="fas fa-robot"></i> TurtleBot 2</span>
+            <span class="meta-item"><i class="fas fa-code"></i> ROS 2 Humble / C++</span>
+        </div>
+
+        <img src="assets/img/turtlebot_nav.jpg" alt="Robot Navigation" class="project-hero-img" onerror="this.src='https://via.placeholder.com/900x400/1e293b/60a5fa?text=Project+Hero+Image'">
+
+        <p class="lead">
+            This project focuses on deploying a complete navigation stack on a TurtleBot2 mobile robot using ROS 2. 
+            The goal was to achieve autonomous navigation in a cluttered environment using LiDAR data and odometry.
+        </p>
+
+        <div class="tech-list">
+            <span class="tech-tag">ROS 2</span>
+            <span class="tech-tag">Nav2</span>
+            <span class="tech-tag">Slam_toolbox</span>
+            <span class="tech-tag">Gazebo</span>
+            <span class="tech-tag">Rviz2</span>
+        </div>
+
+        <h2>Technical Challenges</h2>
+        <ul>
+            <li><strong>Sensor Fusion:</strong> Integrating wheel odometry with IMU data to reduce drift using Extended Kalman Filter (`robot_localization`).</li>
+            <li><strong>Mapping:</strong> Generating a static map of the lab using `slam_toolbox` in async mode.</li>
+            <li><strong>Navigation Tuning:</strong> Tuning the costmap inflation radius and the DWB local planner parameters to allow the robot to pass through narrow doors without collision.</li>
+        </ul>
+
+        <h2>System Architecture</h2>
+        <p>
+            The system runs on a Raspberry Pi 4 connected to the Micro-controller (Kobuki base). 
+            The high-level planning is done via the Nav2 stack.
+        </p>
+        
+        <pre><code># Example: Launching the navigation stack
+ros2 launch my_bot_nav bringup_launch.py map:=/maps/lab_map.yaml</code></pre>
+
+        <h2>Results</h2>
+        <p>The robot successfully navigates from point A to point B with a success rate of 95%, avoiding dynamic obstacles (people walking) in real-time.</p>
+
+        </main>
+
+    <footer style="text-align: center; padding: 40px; color: var(--muted); border-top: 1px solid var(--border); margin-top: 60px;">
+        <p>© 2025 Saturnin Agbotame</p>
+    </footer>
+
+</body>
+</html>
