@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Hybrid 3D Object Detection &mdash; KITTI &mdash; Saturnin Agbotame</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,700;1,9..144,300&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+:root{
+  --bg:#07090f;--surface:#0c101a;--card:#111827;
+  --border:rgba(255,255,255,0.07);--border-h:rgba(99,179,237,0.35);
+  --text:#dde4f0;--muted:#6b7fa3;--accent:#63b3ed;--gold:#f6ad55;--green:#68d391;
+  --glow:rgba(99,179,237,.12);--radius:10px;--max:820px;
+  --fd:'Fraunces',Georgia,serif;--fb:'DM Sans',sans-serif;--fm:'DM Mono',monospace;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--fb);background:var(--bg);color:var(--text);line-height:1.7;padding-bottom:80px;}
+body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:radial-gradient(ellipse 600px 400px at 10% 5%,rgba(99,179,237,.06) 0%,transparent 60%);}
+a{color:inherit;text-decoration:none;}
+img{display:block;}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 28px;position:relative;z-index:1;}
+
+.topbar{padding:22px 0;border-bottom:1px solid var(--border);margin-bottom:60px;
+  display:flex;align-items:center;justify-content:space-between;}
+.back{display:inline-flex;align-items:center;gap:8px;font-size:.85rem;
+  color:var(--muted);font-weight:500;transition:color .2s;}
+.back:hover{color:var(--accent);}
+.logo{font-family:var(--fd);font-size:1rem;color:var(--muted);}
+.logo em{font-style:italic;color:var(--accent);}
+
+.alabel{font-family:var(--fm);font-size:.75rem;color:var(--accent);
+  letter-spacing:.1em;margin-bottom:18px;text-transform:uppercase;}
+h1{font-family:var(--fd);font-size:clamp(1.9rem,4vw,2.8rem);font-weight:700;
+  color:white;letter-spacing:-.5px;line-height:1.15;margin-bottom:22px;}
+.meta{display:flex;flex-wrap:wrap;gap:20px;margin-bottom:36px;}
+.mi{display:flex;align-items:center;gap:7px;font-family:var(--fm);font-size:.78rem;color:var(--muted);}
+.mi i{color:var(--accent);}
+.hero-img{width:100%;height:380px;object-fit:cover;border-radius:var(--radius);
+  border:1px solid var(--border);margin-bottom:50px;}
+.techs{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0 36px;}
+.tt{font-family:var(--fm);font-size:.73rem;padding:4px 11px;border-radius:5px;
+  background:rgba(99,179,237,.08);color:var(--accent);border:1px solid rgba(99,179,237,.15);}
+
+.body h2{font-family:var(--fd);font-size:1.35rem;font-weight:600;color:white;
+  margin:48px 0 16px;display:flex;align-items:center;gap:12px;}
+.body h2::after{content:'';flex:1;height:1px;background:var(--border);}
+.body p{font-size:.95rem;color:var(--muted);line-height:1.85;margin-bottom:16px;}
+.body p strong{color:var(--text);font-weight:500;}
+.body ul{padding-left:1.3em;margin-bottom:16px;}
+.body ul li{font-size:.95rem;color:var(--muted);line-height:1.8;margin-bottom:8px;}
+.body ul li strong{color:var(--text);font-weight:500;}
+
+pre{background:var(--card);border:1px solid var(--border);border-radius:8px;
+  padding:22px;overflow-x:auto;font-family:var(--fm);font-size:.82rem;color:#a5b4fc;margin:20px 0;}
+code{color:var(--accent);font-family:var(--fm);font-size:.88em;}
+
+.result{background:var(--card);border:1px solid var(--border);border-left:3px solid var(--green);
+  border-radius:var(--radius);padding:22px 26px;margin:20px 0;}
+.result .rl{font-family:var(--fm);font-size:.72rem;color:var(--green);
+  letter-spacing:.08em;margin-bottom:8px;text-transform:uppercase;}
+.result p{color:var(--text);font-size:.93rem;margin:0;}
+
+.arch{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
+  padding:32px;margin:24px 0;text-align:center;color:var(--muted);font-family:var(--fm);font-size:.82rem;
+  line-height:2.2;}
+.arch .al{color:var(--accent);margin-bottom:8px;font-size:.75rem;}
+
+.metrics-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:.9rem;}
+.metrics-table th{text-align:left;color:var(--accent);font-family:var(--fm);font-size:.75rem;
+  letter-spacing:.06em;text-transform:uppercase;padding:10px 14px;border-bottom:1px solid var(--border);}
+.metrics-table td{padding:10px 14px;color:var(--muted);border-bottom:1px solid rgba(255,255,255,.03);}
+.metrics-table td strong{color:var(--text);}
+.metrics-table tr:hover td{color:var(--text);}
+
+.afooter{margin-top:70px;padding-top:30px;border-top:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;}
+.afooter a{font-size:.88rem;color:var(--muted);display:flex;align-items:center;gap:7px;transition:color .2s;}
+.afooter a:hover{color:var(--accent);}
+
+footer{text-align:center;padding:40px;color:var(--muted);border-top:1px solid var(--border);margin-top:60px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topbar">
+    <a href="index.html" class="back"><i class="fas fa-arrow-left"></i> Back to Portfolio</a>
+    <div class="logo">Saturnin <em>Agbotame</em></div>
+  </div>
+
+  <article>
+    <div class="alabel">Engineering Project &middot; 2026</div>
+    <h1>Hybrid 3D Object Detection on KITTI</h1>
+
+    <div class="meta">
+      <span class="mi"><i class="fas fa-calendar-alt"></i> 2026</span>
+      <span class="mi"><i class="fas fa-database"></i> KITTI Dataset</span>
+      <span class="mi"><i class="fas fa-code-branch"></i> C++20 &amp; Python 3.10</span>
+      <span class="mi"><i class="fas fa-cube"></i> PointPillars / OpenPCDet</span>
+    </div>
+
+    <img src="assets/img/kitti_perception.jpg" alt="KITTI 3D Object Detection" class="hero-img"
+         onerror="this.src='https://placehold.co/820x380/0c101a/63b3ed?text=KITTI+3D+Object+Detection'">
+
+    <div class="techs">
+      <span class="tt">C++20</span>
+      <span class="tt">Python 3.10</span>
+      <span class="tt">PointPillars</span>
+      <span class="tt">OpenPCDet</span>
+      <span class="tt">PyTorch / CUDA 12.1</span>
+      <span class="tt">Eigen3</span>
+      <span class="tt">PCL 1.10</span>
+      <span class="tt">Open3D</span>
+      <span class="tt">CMake</span>
+    </div>
+
+    <div class="body">
+
+      <p>
+        This project implements a <strong>hybrid 3D object detection pipeline</strong> that combines Python-based deep learning inference
+        with a high-performance C++ evaluation engine. <strong>PointPillars</strong> (via OpenPCDet) runs inference on KITTI LiDAR point clouds,
+        and a custom C++ backend computes detection metrics against ground truth using <strong>oriented bounding box IoU</strong> in Bird's Eye View.
+      </p>
+      <p>
+        The goal was to bridge the gap between a research-oriented inference framework and a production-grade evaluation pipeline,
+        with particular focus on geometric accuracy, coordinate frame handling, and real-time 3D visualization.
+      </p>
+
+      <h2>Architecture</h2>
+      <p>
+        The system is split into two stages. The Python stage handles neural network inference &mdash; loading point clouds,
+        running PointPillars through OpenPCDet, and exporting per-frame predictions as JSON. The C++ stage then takes over:
+        it parses KITTI ground truth labels and calibration files, transforms bounding boxes from the <strong>camera frame to the LiDAR frame</strong>,
+        performs greedy IoU-based matching between predictions and ground truth, and computes precision, recall, and AP metrics.
+      </p>
+
+      <div class="arch">
+        <div class="al">// Pipeline Overview</div>
+        Point Cloud (.bin) &rarr; [ Python &middot; PointPillars / OpenPCDet ] &rarr; pred_XXXX.json
+        <br>
+        &darr;
+        <br>
+        [ C++ Engine ] KITTI Loader &rarr; Transformer (cam &rarr; LiDAR) &rarr; Greedy IoU Matcher &rarr; Metrics (P / R / AP)
+        <br>
+        &darr;
+        <br>
+        [ PCL Visualizer ] Red = Ground Truth &middot; Green = Predictions
+      </div>
+
+      <h2>Technical Challenges</h2>
+      <ul>
+        <li><strong>Coordinate Frame Alignment:</strong> KITTI ground truth is stored in the camera frame, while PointPillars outputs predictions
+          in the LiDAR frame. Implemented a robust C++ transformer using calibration matrices:
+          <code>T_lidar = inv(Tr_velo_to_cam) &times; inv(R0_rect)</code>. A subtle sign error in the rotation inversion caused a ~15&deg;
+          yaw offset that was only caught through visual debugging in the PCL viewer.</li>
+        <li><strong>BEV Oriented Bounding Box IoU:</strong> Standard axis-aligned IoU doesn't work for rotated 3D boxes.
+          Implemented the <strong>Sutherland&ndash;Hodgman</strong> polygon clipping algorithm to compute exact intersection areas
+          between oriented rectangles in Bird's Eye View projection.</li>
+        <li><strong>Greedy Matching Strategy:</strong> Designed a greedy matching algorithm that pairs predictions to ground truth
+          by descending confidence score, preventing duplicate assignments while maximizing true positive count.</li>
+        <li><strong>Cross-Language Pipeline:</strong> Bridging Python inference and C++ evaluation required a clean JSON interface.
+          Used <code>nlohmann_json</code> for parsing and defined a strict schema for prediction files to ensure compatibility.</li>
+      </ul>
+
+      <h2>Stack</h2>
+      <table class="metrics-table">
+        <tr><th>Layer</th><th>Technology</th></tr>
+        <tr><td>Languages</td><td><strong>C++20</strong>, Python 3.10</td></tr>
+        <tr><td>Detection</td><td><strong>PointPillars</strong> via OpenPCDet</td></tr>
+        <tr><td>Deep Learning</td><td>PyTorch 2.1.0 + CUDA 12.1</td></tr>
+        <tr><td>Geometry</td><td>Eigen3, spconv-cu121</td></tr>
+        <tr><td>Point Cloud</td><td>PCL 1.10, Open3D</td></tr>
+        <tr><td>Serialization</td><td>nlohmann_json</td></tr>
+        <tr><td>Dataset</td><td>KITTI 3D Object Detection</td></tr>
+      </table>
+
+      <h2>Usage</h2>
+      <pre><code># Step 1 — Run PointPillars inference
+conda activate kittienv
+python scripts/kitti_inference.py \
+    --data_path data/kitti/velodyne \
+    --cfg_file configs/pointpillar_kitti.yaml \
+    --ckpt checkpoints/pointpillar_7728.pth \
+    --output_dir data/kitti/predictions
+
+# Step 2 — Build & run C++ evaluation
+mkdir -p build && cd build
+cmake .. && make -j$(nproc)
+./kitti_eval \
+    --data_path data/kitti \
+    --pred_path data/kitti/predictions \
+    --score_thresh 0.5 \
+    --iou_thresh 0.5</code></pre>
+
+      <h2>Results</h2>
+      <div class="result">
+        <div class="rl">&#10003; Evaluation on 50 Frames</div>
+        <p>
+          The pipeline achieved <strong>71% precision</strong> and <strong>88% recall</strong> on the KITTI mini-split (Car class, BEV IoU &ge; 0.5).
+          The PCL visualizer confirmed accurate box alignment between predictions (green) and ground truth (red) across all test frames.
+        </p>
+      </div>
+
+      <table class="metrics-table">
+        <tr><th>Metric</th><th>Value</th><th>Description</th></tr>
+        <tr><td>Precision</td><td><strong>71%</strong></td><td>TP / (TP + FP) &mdash; global over 50 frames</td></tr>
+        <tr><td>Recall</td><td><strong>88%</strong></td><td>TP / (TP + FN) &mdash; global over 50 frames</td></tr>
+        <tr><td>IoU Threshold</td><td><strong>0.5</strong></td><td>KITTI standard for Car class</td></tr>
+      </table>
+
+      <table class="metrics-table" style="margin-top:24px;">
+        <tr><th>Difficulty</th><th>AP (PointPillars official)</th></tr>
+        <tr><td>Easy</td><td><strong>87.75</strong></td></tr>
+        <tr><td>Moderate</td><td><strong>77.28</strong></td></tr>
+        <tr><td>Hard</td><td><strong>72.84</strong></td></tr>
+      </table>
+
+      <p style="margin-top:24px;">
+        Key takeaway: the biggest source of error was not the neural network itself but the <strong>coordinate transformation chain</strong>.
+        Careful geometric validation through visualization was essential to catch subtle calibration issues
+        that would have silently degraded all downstream metrics.
+      </p>
+
+    </div>
+
+    <div class="afooter">
+      <a href="index.html"><i class="fas fa-arrow-left"></i> Back to portfolio</a>
+      <a href="https://github.com/saturnin-robotics/KittiPerception" target="_blank"><i class="fab fa-github"></i> View on GitHub</a>
+    </div>
+  </article>
+
+</div>
+<footer>&copy; 2026 Saturnin Agbotame</footer>
+</body>
+</html>
