@@ -3,83 +3,117 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Hybrid 3D Object Detection &mdash; KITTI &mdash; Saturnin Agbotame</title>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,700;1,9..144,300&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<title>Hybrid 3D Object Detection on KITTI &middot; Saturnin Agbotame</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Source+Code+Pro:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
 :root{
-  --bg:#07090f;--surface:#0c101a;--card:#111827;
-  --border:rgba(255,255,255,0.07);--border-h:rgba(99,179,237,0.35);
-  --text:#dde4f0;--muted:#6b7fa3;--accent:#63b3ed;--gold:#f6ad55;--green:#68d391;
-  --glow:rgba(99,179,237,.12);--radius:10px;--max:820px;
-  --fd:'Fraunces',Georgia,serif;--fb:'DM Sans',sans-serif;--fm:'DM Mono',monospace;
+  --bg:#f8f5ef;
+  --surface:#f0ece3;
+  --card:#ffffff;
+  --border:rgba(0,0,0,0.09);
+  --border-h:rgba(29,78,216,0.35);
+  --text:#1a1714;
+  --muted:#5c5650;
+  --accent:#1d4ed8;
+  --gold:#92400e;
+  --green:#065f46;
+  --glow:rgba(29,78,216,0.06);
+  --radius:10px;--max:840px;
+  --fd:'Playfair Display',Georgia,serif;
+  --fb:'Lora',Georgia,serif;
+  --fm:'Source Code Pro',Courier,monospace;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:var(--fb);background:var(--bg);color:var(--text);line-height:1.7;padding-bottom:80px;}
+html{font-size:18px;}
+body{font-family:var(--fb);background:var(--bg);color:var(--text);line-height:1.75;padding-bottom:80px;}
 body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
-  background:radial-gradient(ellipse 600px 400px at 10% 5%,rgba(99,179,237,.06) 0%,transparent 60%);}
+  background:radial-gradient(ellipse 700px 500px at 0% 0%,rgba(29,78,216,0.04) 0%,transparent 60%);}
 a{color:inherit;text-decoration:none;}
 img{display:block;}
-.wrap{max-width:var(--max);margin:0 auto;padding:0 28px;position:relative;z-index:1;}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 32px;position:relative;z-index:1;}
 
-.topbar{padding:22px 0;border-bottom:1px solid var(--border);margin-bottom:60px;
-  display:flex;align-items:center;justify-content:space-between;}
-.back{display:inline-flex;align-items:center;gap:8px;font-size:.85rem;
-  color:var(--muted);font-weight:500;transition:color .2s;}
+.topbar{
+  padding:24px 0;border-bottom:1px solid var(--border);margin-bottom:64px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.back{display:inline-flex;align-items:center;gap:8px;font-size:.88rem;color:var(--muted);font-weight:500;transition:color .2s;}
 .back:hover{color:var(--accent);}
-.logo{font-family:var(--fd);font-size:1rem;color:var(--muted);}
+.logo{font-family:var(--fd);font-size:1.05rem;color:var(--muted);}
 .logo em{font-style:italic;color:var(--accent);}
 
-.alabel{font-family:var(--fm);font-size:.75rem;color:var(--accent);
-  letter-spacing:.1em;margin-bottom:18px;text-transform:uppercase;}
-h1{font-family:var(--fd);font-size:clamp(1.9rem,4vw,2.8rem);font-weight:700;
-  color:white;letter-spacing:-.5px;line-height:1.15;margin-bottom:22px;}
-.meta{display:flex;flex-wrap:wrap;gap:20px;margin-bottom:36px;}
+.alabel{font-family:var(--fm);font-size:.72rem;color:var(--accent);letter-spacing:.1em;margin-bottom:18px;text-transform:uppercase;}
+h1{
+  font-family:var(--fd);font-size:clamp(2rem,4.2vw,3rem);font-weight:700;
+  color:var(--text);letter-spacing:-.3px;line-height:1.15;margin-bottom:24px;
+}
+.meta{display:flex;flex-wrap:wrap;gap:22px;margin-bottom:38px;}
 .mi{display:flex;align-items:center;gap:7px;font-family:var(--fm);font-size:.78rem;color:var(--muted);}
 .mi i{color:var(--accent);}
-.hero-img{width:100%;height:380px;object-fit:cover;border-radius:var(--radius);
-  border:1px solid var(--border);margin-bottom:50px;}
-.techs{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0 36px;}
-.tt{font-family:var(--fm);font-size:.73rem;padding:4px 11px;border-radius:5px;
-  background:rgba(99,179,237,.08);color:var(--accent);border:1px solid rgba(99,179,237,.15);}
+.hero-img{
+  width:100%;height:390px;object-fit:cover;border-radius:var(--radius);
+  border:1px solid var(--border);margin-bottom:52px;
+  box-shadow:0 4px 28px rgba(0,0,0,0.08);
+}
+.techs{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0 38px;}
+.tt{
+  font-family:var(--fm);font-size:.72rem;padding:5px 12px;border-radius:5px;
+  background:rgba(29,78,216,.06);color:var(--accent);border:1px solid rgba(29,78,216,.16);
+}
 
-.body h2{font-family:var(--fd);font-size:1.35rem;font-weight:600;color:white;
-  margin:48px 0 16px;display:flex;align-items:center;gap:12px;}
+.body h2{
+  font-family:var(--fd);font-size:1.55rem;font-weight:600;color:var(--text);
+  margin:52px 0 18px;display:flex;align-items:center;gap:14px;
+}
 .body h2::after{content:'';flex:1;height:1px;background:var(--border);}
-.body p{font-size:.95rem;color:var(--muted);line-height:1.85;margin-bottom:16px;}
-.body p strong{color:var(--text);font-weight:500;}
-.body ul{padding-left:1.3em;margin-bottom:16px;}
-.body ul li{font-size:.95rem;color:var(--muted);line-height:1.8;margin-bottom:8px;}
-.body ul li strong{color:var(--text);font-weight:500;}
+.body p{font-size:1rem;color:var(--muted);line-height:1.9;margin-bottom:18px;}
+.body p strong{color:var(--text);font-weight:600;}
+.body ul{padding-left:1.4em;margin-bottom:18px;}
+.body ul li{font-size:1rem;color:var(--muted);line-height:1.85;margin-bottom:10px;}
+.body ul li strong{color:var(--text);font-weight:600;}
 
-pre{background:var(--card);border:1px solid var(--border);border-radius:8px;
-  padding:22px;overflow-x:auto;font-family:var(--fm);font-size:.82rem;color:#a5b4fc;margin:20px 0;}
+pre{
+  background:var(--card);border:1px solid var(--border);border-radius:8px;
+  padding:24px;overflow-x:auto;font-family:var(--fm);font-size:.8rem;color:#374151;margin:22px 0;
+  box-shadow:0 2px 10px rgba(0,0,0,0.04);line-height:1.65;
+}
 code{color:var(--accent);font-family:var(--fm);font-size:.88em;}
 
-.result{background:var(--card);border:1px solid var(--border);border-left:3px solid var(--green);
-  border-radius:var(--radius);padding:22px 26px;margin:20px 0;}
-.result .rl{font-family:var(--fm);font-size:.72rem;color:var(--green);
-  letter-spacing:.08em;margin-bottom:8px;text-transform:uppercase;}
-.result p{color:var(--text);font-size:.93rem;margin:0;}
+.result{
+  background:var(--card);border:1px solid var(--border);border-left:3px solid var(--green);
+  border-radius:var(--radius);padding:24px 28px;margin:22px 0;
+  box-shadow:0 2px 10px rgba(0,0,0,0.04);
+}
+.result .rl{font-family:var(--fm);font-size:.72rem;color:var(--green);letter-spacing:.08em;margin-bottom:10px;text-transform:uppercase;}
+.result p{color:var(--text);font-size:.97rem;margin:0;line-height:1.8;}
 
-.arch{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
-  padding:32px;margin:24px 0;text-align:center;color:var(--muted);font-family:var(--fm);font-size:.82rem;
-  line-height:2.2;}
-.arch .al{color:var(--accent);margin-bottom:8px;font-size:.75rem;}
+.arch{
+  background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
+  padding:34px;margin:26px 0;text-align:center;color:var(--muted);font-family:var(--fm);font-size:.8rem;
+  line-height:2.5;box-shadow:0 2px 10px rgba(0,0,0,0.04);
+}
+.arch .al{color:var(--accent);margin-bottom:10px;font-size:.72rem;}
 
-.metrics-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:.9rem;}
-.metrics-table th{text-align:left;color:var(--accent);font-family:var(--fm);font-size:.75rem;
-  letter-spacing:.06em;text-transform:uppercase;padding:10px 14px;border-bottom:1px solid var(--border);}
-.metrics-table td{padding:10px 14px;color:var(--muted);border-bottom:1px solid rgba(255,255,255,.03);}
-.metrics-table td strong{color:var(--text);}
+.metrics-table{width:100%;border-collapse:collapse;margin:22px 0;font-size:.95rem;}
+.metrics-table th{
+  text-align:left;color:var(--accent);font-family:var(--fm);font-size:.72rem;
+  letter-spacing:.06em;text-transform:uppercase;padding:12px 16px;border-bottom:1px solid var(--border);
+}
+.metrics-table td{padding:12px 16px;color:var(--muted);border-bottom:1px solid rgba(0,0,0,0.04);}
+.metrics-table td strong{color:var(--text);font-weight:600;}
 .metrics-table tr:hover td{color:var(--text);}
 
-.afooter{margin-top:70px;padding-top:30px;border-top:1px solid var(--border);
-  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;}
-.afooter a{font-size:.88rem;color:var(--muted);display:flex;align-items:center;gap:7px;transition:color .2s;}
+.afooter{
+  margin-top:76px;padding-top:32px;border-top:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;
+}
+.afooter a{font-size:.92rem;color:var(--muted);display:flex;align-items:center;gap:8px;transition:color .2s;}
 .afooter a:hover{color:var(--accent);}
 
-footer{text-align:center;padding:40px;color:var(--muted);border-top:1px solid var(--border);margin-top:60px;}
+footer{
+  text-align:center;padding:40px;color:var(--muted);
+  border-top:1px solid var(--border);margin-top:64px;font-size:.9rem;
+}
 </style>
 </head>
 <body>
@@ -102,7 +136,7 @@ footer{text-align:center;padding:40px;color:var(--muted);border-top:1px solid va
     </div>
 
     <img src="assets/img/kitti_perception.png" alt="KITTI 3D Object Detection" class="hero-img"
-         onerror="this.src='https://placehold.co/820x380/0c101a/63b3ed?text=KITTI+3D+Object+Detection'">
+         onerror="this.src='https://placehold.co/840x390/f0ece3/1d4ed8?text=KITTI+3D+Object+Detection'">
 
     <div class="techs">
       <span class="tt">C++20</span>
@@ -119,7 +153,7 @@ footer{text-align:center;padding:40px;color:var(--muted);border-top:1px solid va
     <div class="body">
 
       <p>
-        This project implements a <strong>hybrid 3D object detection pipeline</strong> that combines Python-based deep learning inference
+        This project implements a <strong>hybrid 3D object detection pipeline</strong> combining Python-based deep learning inference
         with a high-performance C++ evaluation engine. <strong>PointPillars</strong> (via OpenPCDet) runs inference on KITTI LiDAR point clouds,
         and a custom C++ backend computes detection metrics against ground truth using <strong>oriented bounding box IoU</strong> in Bird's Eye View.
       </p>
@@ -130,7 +164,7 @@ footer{text-align:center;padding:40px;color:var(--muted);border-top:1px solid va
 
       <h2>Architecture</h2>
       <p>
-        The system is split into two stages. The Python stage handles neural network inference &mdash; loading point clouds,
+        The system is split into two stages. The Python stage handles neural network inference: loading point clouds,
         running PointPillars through OpenPCDet, and exporting per-frame predictions as JSON. The C++ stage then takes over:
         it parses KITTI ground truth labels and calibration files, transforms bounding boxes from the <strong>camera frame to the LiDAR frame</strong>,
         performs greedy IoU-based matching between predictions and ground truth, and computes precision, recall, and AP metrics.
@@ -153,10 +187,10 @@ footer{text-align:center;padding:40px;color:var(--muted);border-top:1px solid va
       <ul>
         <li><strong>Coordinate Frame Alignment:</strong> KITTI ground truth is stored in the camera frame, while PointPillars outputs predictions
           in the LiDAR frame. Implemented a robust C++ transformer using calibration matrices:
-          <code>T_lidar = inv(Tr_velo_to_cam) &times; inv(R0_rect)</code>. A subtle sign error in the rotation inversion caused a ~15&deg;
+          <code>T_lidar = inv(Tr_velo_to_cam) x inv(R0_rect)</code>. A subtle sign error in the rotation inversion caused a ~15 deg
           yaw offset that was only caught through visual debugging in the PCL viewer.</li>
-        <li><strong>BEV Oriented Bounding Box IoU:</strong> Standard axis-aligned IoU doesn't work for rotated 3D boxes.
-          Implemented the <strong>Sutherland&ndash;Hodgman</strong> polygon clipping algorithm to compute exact intersection areas
+        <li><strong>BEV Oriented Bounding Box IoU:</strong> Standard axis-aligned IoU does not work for rotated 3D boxes.
+          Implemented the <strong>Sutherland-Hodgman</strong> polygon clipping algorithm to compute exact intersection areas
           between oriented rectangles in Bird's Eye View projection.</li>
         <li><strong>Greedy Matching Strategy:</strong> Designed a greedy matching algorithm that pairs predictions to ground truth
           by descending confidence score, preventing duplicate assignments while maximizing true positive count.</li>
@@ -177,7 +211,7 @@ footer{text-align:center;padding:40px;color:var(--muted);border-top:1px solid va
       </table>
 
       <h2>Usage</h2>
-      <pre><code># Step 1 — Run PointPillars inference
+      <pre><code># Step 1 - Run PointPillars inference
 conda activate kittienv
 python scripts/kitti_inference.py \
     --data_path data/kitti/velodyne \
@@ -185,9 +219,9 @@ python scripts/kitti_inference.py \
     --ckpt checkpoints/pointpillar_7728.pth \
     --output_dir data/kitti/predictions
 
-# Step 2 — Build & run C++ evaluation
-mkdir -p build && cd build
-cmake .. && make -j$(nproc)
+# Step 2 - Build &amp; run C++ evaluation
+mkdir -p build &amp;&amp; cd build
+cmake .. &amp;&amp; make -j$(nproc)
 ./kitti_eval \
     --data_path data/kitti \
     --pred_path data/kitti/predictions \
@@ -205,8 +239,8 @@ cmake .. && make -j$(nproc)
 
       <table class="metrics-table">
         <tr><th>Metric</th><th>Value</th><th>Description</th></tr>
-        <tr><td>Precision</td><td><strong>71%</strong></td><td>TP / (TP + FP) &mdash; global over 50 frames</td></tr>
-        <tr><td>Recall</td><td><strong>88%</strong></td><td>TP / (TP + FN) &mdash; global over 50 frames</td></tr>
+        <tr><td>Precision</td><td><strong>71%</strong></td><td>TP / (TP + FP), global over 50 frames</td></tr>
+        <tr><td>Recall</td><td><strong>88%</strong></td><td>TP / (TP + FN), global over 50 frames</td></tr>
         <tr><td>IoU Threshold</td><td><strong>0.5</strong></td><td>KITTI standard for Car class</td></tr>
       </table>
 
@@ -217,7 +251,7 @@ cmake .. && make -j$(nproc)
         <tr><td>Hard</td><td><strong>72.84</strong></td></tr>
       </table>
 
-      <p style="margin-top:24px;">
+      <p style="margin-top:26px;">
         Key takeaway: the biggest source of error was not the neural network itself but the <strong>coordinate transformation chain</strong>.
         Careful geometric validation through visualization was essential to catch subtle calibration issues
         that would have silently degraded all downstream metrics.
